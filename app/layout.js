@@ -26,7 +26,6 @@ export default function RootLayout({ children }) {
           scaling="100%"
         >
           {children}
-          <ThemePanel />
         </Theme>
       </body>
     </html>
