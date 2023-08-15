@@ -1,4 +1,4 @@
-import { Text, Button, Flex, Table, Container } from "@radix-ui/themes";
+import { Text, Button, Flex, Heading, Container } from "@radix-ui/themes";
 import { FaceIcon, ImageIcon, SunIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
         <Button variant="soft">
           <FaceIcon /> Hello
         </Button>
+        <Heading as="h1">Christian Dam</Heading>
       </Flex>
     </Container>
   );
