@@ -1,5 +1,6 @@
 import "@radix-ui/themes/styles.css";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
+import "./globals.css";
 import "./themes-config.css";
 
 import { Inter } from "next/font/google";
@@ -20,10 +21,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={inter.className}>
       <body>
         <Theme
-          accentColor="amber"
-          grayColor="sand"
+          accentColor="blue"
+          grayColor="gray"
           radius="medium"
           scaling="100%"
+          appearance="dark"
         >
           {children}
         </Theme>
