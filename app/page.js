@@ -25,9 +25,10 @@ export default function Home() {
         >
           <Text color="gray">About</Text>
           <Text size={{ initial: "4", md: "8" }}>
-            I’m currently working @ <Link href="#">Righthub</Link> and also
-            building <Link>Togæther</Link>. When I’m not designing, you can find
-            me on Aarhus’ playgrounds 🛝 with my kid or playing pizzaiolo 👨🏻‍🍳🍕.
+            I’m currently working @{" "}
+            <Link href="https://righthub.com/">Righthub</Link> and also building{" "}
+            <Link>Togæther</Link>. When I’m not designing, you can find me on
+            Aarhus’ playgrounds 🛝 with my kid or playing pizzaiolo 👨🏻‍🍳🍕.
           </Text>
         </Flex>
 
