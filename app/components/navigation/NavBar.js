@@ -7,7 +7,10 @@ export default function Navbar() {
         ✦ Christian Dam ✦
       </Link>
       <Flex gap="5">
-        <Link href="/about" color="gray">
+        <Link
+          href="https://chdam.notion.site/Product-design-portfolio-dab50104b0204aaeabc176f8054615f3?pvs=4"
+          color="gray"
+        >
           Work
         </Link>
         <Link
