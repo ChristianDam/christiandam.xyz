@@ -11,7 +11,9 @@ export default function Home() {
           py={{ initial: "7", md: "9" }}
           style={{ borderBottom: "1px solid " }}
         >
-          <h1 className="text-4xl md:text-8xl font-bold">I'm Christian,</h1>
+          <h1 className="text-4xl md:text-8xl font-bold">
+            I&apos;m Christian,
+          </h1>
           <h1 className="text-4xl md:text-8xl font-bold">a product designer</h1>
           <h1 className="text-4xl md:text-8xl font-bold">based in Aarhus.</h1>
         </Flex>
