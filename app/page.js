@@ -1,51 +1,48 @@
-import { Text, Flex, Heading, Container, Link } from "@radix-ui/themes";
-import Navbar from "./components/navigation/NavBar";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <Flex direction="column">
-      <Container size="4" px={{ initial: 4 }}>
-        <Navbar />
-        <Flex
-          direction="column"
-          py={{ initial: "7", md: "9" }}
-          style={{ borderBottom: "1px solid " }}
-        >
-          <h1 className="text-4xl md:text-8xl font-bold">
-            I&apos;m Christian,
-          </h1>
-          <h1 className="text-4xl md:text-8xl font-bold">a product designer</h1>
-          <h1 className="text-4xl md:text-8xl font-bold">based in Aarhus.</h1>
-        </Flex>
-        <Flex
-          direction="column"
-          py={{ initial: "7", md: "9" }}
-          gap={{ initial: "0", md: "2" }}
-          style={{ borderBottom: "1px solid " }}
-        >
-          <Text color="gray">About</Text>
-          <Text size={{ initial: "4", md: "8" }}>
-            I’m currently working @{" "}
-            <Link href="https://righthub.com/">Righthub</Link> and also building{" "}
-            <Link>Togæther</Link>. When I’m not designing, you can find me on
-            Aarhus’ playgrounds 🛝 with my kid or playing pizzaiolo 👨🏻‍🍳🍕.
-          </Text>
-        </Flex>
+    <main className="container mx-auto px-4 py-8">
+      <section className="py-12 border-b">
+        <h1 className="text-4xl md:text-8xl font-bold tracking-tight">
+          I&apos;m Christian,
+        </h1>
+        <h1 className="text-4xl md:text-8xl font-bold tracking-tight">
+          a product designer
+        </h1>
+        <h1 className="text-4xl md:text-8xl font-bold tracking-tight">
+          based in Aarhus.
+        </h1>
+      </section>
 
-        <Flex
-          direction="column"
-          py={{ initial: "7", md: "9" }}
-          gap={{ initial: "2", md: "6" }}
-          style={{ borderBottom: "1px solid " }}
-        >
-          <Heading size={{ initial: "7", md: "9" }} weight="medium">
-            Selected work
-          </Heading>
-          <Text size={{ initial: "4", md: "6" }}>
-            A mix of new and old work. Head to <Link>Work</Link> to see all.
-          </Text>
-        </Flex>
-      </Container>
-    </Flex>
-  );
+      <section className="py-12 border-b">
+        <h2 className="text-muted-foreground mb-4">About</h2>
+        <p className="text-lg md:text-2xl">
+          I&apos;m currently working @{" "}
+          <Link href="https://righthub.com/" className="text-primary hover:underline">
+            Righthub
+          </Link>{" "}
+          and also building{" "}
+          <Link href="#" className="text-primary hover:underline">
+            Togæther
+          </Link>
+          . When I&apos;m not designing, you can find me on Aarhus&apos; playgrounds 🛝 with my
+          kid or playing pizzaiolo 👨🏻‍🍳🍕.
+        </p>
+      </section>
+
+      <section className="py-12 border-b">
+        <h2 className="text-3xl md:text-5xl font-medium mb-4">Selected work</h2>
+        <p className="text-lg md:text-xl text-muted-foreground">
+          A mix of new and old work. Head to{" "}
+          <Link href="#" className="text-primary hover:underline">
+            Work
+          </Link>{" "}
+          to see all.
+        </p>
+      </section>
+    </main>
+  )
 }
