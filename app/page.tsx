@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { fetchLocation } from '../lib/utils/api';
+import WeatherTest from '../components/WeatherTest';
 
 export default async function Home(): Promise<React.ReactElement> {
   const location = await fetchLocation();
@@ -20,6 +21,9 @@ export default async function Home(): Promise<React.ReactElement> {
         <p className="text-muted-foreground mt-4">
           {location.country} ({location.latitude}, {location.longitude})
         </p>
+        <div className="mt-8">
+          <WeatherTest />
+        </div>
       </section>
 
       <section className="py-12 border-b">
