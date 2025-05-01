@@ -4,13 +4,15 @@ import type { WeatherData } from '../../../lib/types/api';
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
 const OPENWEATHER_BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
+// Aarhus, Denmark coordinates
+const AARHUS_LAT = 56.1629;
+const AARHUS_LON = 10.2039;
+
 type ErrorResponse = {
   error: string;
 };
 
-export async function GET(
-  request: Request
-): Promise<NextResponse<WeatherData | ErrorResponse>> {
+export async function GET(): Promise<NextResponse<WeatherData | ErrorResponse>> {
   if (!OPENWEATHER_API_KEY) {
     return NextResponse.json(
       { error: 'OpenWeather API key not configured' },
@@ -18,20 +20,9 @@ export async function GET(
     );
   }
 
-  const { searchParams } = new URL(request.url);
-  const lat = searchParams.get('lat');
-  const lon = searchParams.get('lon');
-
-  if (!lat || !lon) {
-    return NextResponse.json(
-      { error: 'Latitude and longitude are required' },
-      { status: 400 }
-    );
-  }
-
   try {
     const response = await fetch(
-      `${OPENWEATHER_BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=metric`
+      `${OPENWEATHER_BASE_URL}/weather?lat=${AARHUS_LAT}&lon=${AARHUS_LON}&appid=${OPENWEATHER_API_KEY}&units=metric`
     );
 
     if (!response.ok) {
