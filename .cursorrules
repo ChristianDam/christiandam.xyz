@@ -1,0 +1,44 @@
+{
+  "ignore": [
+    "node_modules",
+    ".next",
+    "public",
+    "*.log",
+    "*.lock",
+    "*.min.js",
+    "dist",
+    "build"
+  ],
+  "format": {
+    "javascript": {
+      "semi": true,
+      "singleQuote": true,
+      "tabWidth": 2,
+      "trailingComma": "es5",
+      "printWidth": 80
+    },
+    "typescript": {
+      "semi": true,
+      "singleQuote": true,
+      "tabWidth": 2,
+      "trailingComma": "es5",
+      "printWidth": 80
+    },
+    "json": {
+      "tabWidth": 2
+    }
+  },
+  "search": {
+    "exclude": [
+      "**/node_modules/**",
+      "**/.next/**",
+      "**/dist/**",
+      "**/build/**"
+    ]
+  },
+  "editor": {
+    "defaultFormatter": "prettier",
+    "formatOnSave": true,
+    "wordWrap": "on"
+  }
+} 

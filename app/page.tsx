@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
+import React from 'react';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import Link from 'next/link';
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   return (
     <main className="container mx-auto px-4 py-8">
       <section className="py-12 border-b">
@@ -20,29 +21,32 @@ export default function Home() {
       <section className="py-12 border-b">
         <h2 className="text-muted-foreground mb-4">About</h2>
         <p className="text-lg md:text-2xl">
-          I&apos;m currently working @{" "}
-          <Link href="https://righthub.com/" className="text-primary hover:underline">
+          I&apos;m currently working @{' '}
+          <Link
+            href="https://righthub.com/"
+            className="text-primary hover:underline"
+          >
             Righthub
-          </Link>{" "}
-          and also building{" "}
+          </Link>{' '}
+          and also building{' '}
           <Link href="#" className="text-primary hover:underline">
             Togæther
           </Link>
-          . When I&apos;m not designing, you can find me on Aarhus&apos; playgrounds 🛝 with my
-          kid or playing pizzaiolo 👨🏻‍🍳🍕.
+          . When I&apos;m not designing, you can find me on Aarhus&apos; playgrounds 🛝
+          with my kid or playing pizzaiolo 👨🏻‍🍳🍕.
         </p>
       </section>
 
       <section className="py-12 border-b">
         <h2 className="text-3xl md:text-5xl font-medium mb-4">Selected work</h2>
         <p className="text-lg md:text-xl text-muted-foreground">
-          A mix of new and old work. Head to{" "}
+          A mix of new and old work. Head to{' '}
           <Link href="#" className="text-primary hover:underline">
             Work
-          </Link>{" "}
+          </Link>{' '}
           to see all.
         </p>
       </section>
     </main>
-  )
-}
+  );
+} 
