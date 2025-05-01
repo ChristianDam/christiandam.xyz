@@ -2,8 +2,11 @@ import React from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import Link from 'next/link';
+import { fetchLocation } from '../lib/utils/api';
 
-export default function Home(): React.ReactElement {
+export default async function Home(): Promise<React.ReactElement> {
+  const location = await fetchLocation();
+
   return (
     <main className="container mx-auto px-4 py-8">
       <section className="py-12 border-b">
@@ -16,6 +19,9 @@ export default function Home(): React.ReactElement {
         <h1 className="text-4xl md:text-8xl font-bold tracking-tight">
           based in Aarhus.
         </h1>
+        <p className="text-muted-foreground mt-4">
+          {location.country} ({location.latitude}, {location.longitude})
+        </p>
       </section>
 
       <section className="py-12 border-b">
@@ -32,7 +38,7 @@ export default function Home(): React.ReactElement {
           <Link href="#" className="text-primary hover:underline">
             Togæther
           </Link>
-          . When I&apos;m not designing, you can find me on Aarhus&apos; playgrounds 🛝
+          . When I&apos;m not designing, you can find me on {location.city}&apos;s playgrounds 🛝
           with my kid or playing pizzaiolo 👨🏻‍🍳🍕.
         </p>
       </section>

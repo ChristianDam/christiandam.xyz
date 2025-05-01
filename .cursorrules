@@ -40,5 +40,51 @@
     "defaultFormatter": "prettier",
     "formatOnSave": true,
     "wordWrap": "on"
+  },
+  "bestPractices": {
+    "typescript": {
+      "strict": true,
+      "useLatestFeatures": true,
+      "preferTypeAnnotations": true,
+      "avoidAny": true,
+      "useTypeGuards": true
+    },
+    "react": {
+      "useFunctionalComponents": true,
+      "preferHooks": true,
+      "useAppRouter": true,
+      "componentStructure": {
+        "useNamedExports": true,
+        "fileNaming": "PascalCase",
+        "folderStructure": "feature-based"
+      }
+    },
+    "styling": {
+      "useTailwind": true,
+      "useShadcnUI": true,
+      "responsiveDesign": true,
+      "darkModeSupport": true
+    },
+    "performance": {
+      "codeSplitting": true,
+      "lazyLoading": true,
+      "imageOptimization": true,
+      "memoization": true
+    },
+    "naming": {
+      "components": "PascalCase",
+      "functions": "camelCase",
+      "variables": "camelCase",
+      "constants": "UPPER_SNAKE_CASE",
+      "interfaces": "PascalCase",
+      "types": "PascalCase"
+    },
+    "codeQuality": {
+      "writeCompleteImplementations": true,
+      "addComments": true,
+      "documentation": true,
+      "errorHandling": true,
+      "testing": true
+    }
   }
 } 
