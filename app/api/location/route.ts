@@ -3,7 +3,6 @@ import type { LocationData } from '../../../lib/types/api';
 
 export async function GET(): Promise<NextResponse<LocationData>> {
   try {
-    console.log('Fetching location data from ip-api.com...');
     const response = await fetch('http://ip-api.com/json/', {
       headers: {
         'Accept': 'application/json',
@@ -16,7 +15,6 @@ export async function GET(): Promise<NextResponse<LocationData>> {
     }
 
     const data = await response.json();
-    console.log('ip-api.com response:', data);
 
     // Check if the API returned an error
     if (data.status === 'fail') {
@@ -32,7 +30,6 @@ export async function GET(): Promise<NextResponse<LocationData>> {
       timezone: data.timezone,
     };
 
-    console.log('Processed location data:', locationData);
     return NextResponse.json(locationData);
   } catch (error) {
     console.error('Error fetching location:', error);

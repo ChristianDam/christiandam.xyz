@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { fetchLocation } from '../lib/utils/api';
-import WeatherTest from '../components/WeatherTest';
+import Weather from '../components/weather';
 
 export default async function Home(): Promise<React.ReactElement> {
   const location = await fetchLocation();
@@ -22,7 +22,7 @@ export default async function Home(): Promise<React.ReactElement> {
           {location.country} ({location.latitude}, {location.longitude})
         </p>
         <div className="mt-8">
-          <WeatherTest />
+          <Weather />
         </div>
       </section>
 

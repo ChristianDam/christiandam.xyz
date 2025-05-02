@@ -8,13 +8,27 @@ const OPENWEATHER_BASE_URL = 'https://api.openweathermap.org/data/2.5';
 const AARHUS_LAT = 56.1629;
 const AARHUS_LON = 10.2039;
 
-type ErrorResponse = {
+interface OpenWeatherResponse {
+  main: {
+    temp: number;
+    humidity: number;
+  };
+  weather: Array<{
+    main: string;
+    icon: string;
+  }>;
+  wind: {
+    speed: number;
+  };
+}
+
+interface ErrorResponse {
   error: string;
-};
+}
 
 export async function GET(): Promise<NextResponse<WeatherData | ErrorResponse>> {
   if (!OPENWEATHER_API_KEY) {
-    return NextResponse.json(
+    return NextResponse.json<ErrorResponse>(
       { error: 'OpenWeather API key not configured' },
       { status: 500 }
     );
@@ -29,7 +43,7 @@ export async function GET(): Promise<NextResponse<WeatherData | ErrorResponse>> 
       throw new Error('Failed to fetch weather data');
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as OpenWeatherResponse;
 
     const weatherData: WeatherData = {
       temperature: Math.round(data.main.temp),
@@ -37,13 +51,12 @@ export async function GET(): Promise<NextResponse<WeatherData | ErrorResponse>> 
       humidity: data.main.humidity,
       windSpeed: Math.round(data.wind.speed * 3.6), // Convert m/s to km/h
       icon: data.weather[0].icon,
-      forecast: [], // We'll implement forecast in a separate endpoint
     };
 
-    return NextResponse.json(weatherData);
+    return NextResponse.json<WeatherData>(weatherData);
   } catch (error) {
     console.error('Error fetching weather data:', error);
-    return NextResponse.json(
+    return NextResponse.json<ErrorResponse>(
       { error: 'Failed to fetch weather data' },
       { status: 500 }
     );

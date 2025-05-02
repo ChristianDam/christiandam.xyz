@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import type { WeatherData } from '../lib/types/api';
 
-export default function WeatherTest() {
+export default function Weather() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -58,6 +58,16 @@ export default function WeatherTest() {
         <div>{weather.humidity}%</div>
         <div>Wind Speed:</div>
         <div>{weather.windSpeed} km/h</div>
+        <div>Weather Icon:</div>
+        <div>
+          <img
+            src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+            alt={weather.condition}
+            width={50}
+            height={50}
+            className="inline-block"
+          />
+        </div>
       </div>
     </div>
   );

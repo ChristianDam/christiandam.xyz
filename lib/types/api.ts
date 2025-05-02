@@ -12,12 +12,6 @@ export interface WeatherData {
   humidity: number;
   windSpeed: number;
   icon: string;
-  forecast: {
-    date: string;
-    high: number;
-    low: number;
-    condition: string;
-  }[];
 }
 
 export interface FootballMatch {
