@@ -13,4 +13,4 @@ This is the first article written in **Markdown**. It demonstrates the new artic
 console.log('Hello world');
 ```
 
-![Sample Image](/public/vercel.svg)
+![Grandma](/public/grandma.jpg)
