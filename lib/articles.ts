@@ -26,7 +26,8 @@ function parseFrontMatter(file: string): { meta: Partial<ArticleMeta>; content: 
     for (const line of lines) {
       const [key, ...rest] = line.split(':');
       if (!key) continue;
-      meta[key.trim() as keyof ArticleMeta] = rest.join(':').trim();
+      // assign via index to avoid strict type issues; values will be parsed later
+      (meta as Record<string, unknown>)[key.trim()] = rest.join(':').trim();
     }
     content = file.slice(match[0].length);
     if (typeof meta.tags === 'string') {
