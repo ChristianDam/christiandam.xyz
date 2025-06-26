@@ -66,3 +66,12 @@
     @apply bg-background text-foreground;
   }
 }
+.markdown h1 { @apply text-4xl font-bold mb-4; }
+.markdown h2 { @apply text-3xl font-bold mb-3; }
+.markdown h3 { @apply text-2xl font-semibold mb-2; }
+.markdown p { @apply mb-4 leading-7; }
+.markdown pre { @apply bg-muted p-4 rounded mb-4 overflow-x-auto; }
+.markdown code { @apply bg-muted px-1 rounded; }
+.markdown img { @apply my-4; }
+.markdown a { @apply text-primary underline; }
+.markdown blockquote { @apply border-l-2 pl-4 italic mb-4; }
