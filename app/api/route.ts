@@ -6,9 +6,6 @@ export async function GET() {
     endpoints: {
       location: '/api/location',
       weather: '/api/weather',
-      football: '/api/football',
-      music: '/api/music',
-      training: '/api/training',
     },
   });
 } 

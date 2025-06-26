@@ -1,9 +1,6 @@
 import {
   LocationData,
   WeatherData,
-  FootballMatch,
-  MusicPlaylist,
-  TrainingMetrics,
 } from '../types/api';
 
 // Cache for location data to prevent too many API calls
@@ -84,48 +81,3 @@ export async function fetchWeather(): Promise<WeatherData> {
     throw error;
   }
 }
-
-export async function fetchFootballMatches(): Promise<FootballMatch[]> {
-  try {
-    const response = await fetch(`${getBaseUrl()}/api/football`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (!response.ok) throw new Error('Failed to fetch football matches');
-    return response.json();
-  } catch (error) {
-    console.error('Error fetching football matches:', error);
-    throw error;
-  }
-}
-
-export async function fetchMusicPlaylists(): Promise<MusicPlaylist[]> {
-  try {
-    const response = await fetch(`${getBaseUrl()}/api/music`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (!response.ok) throw new Error('Failed to fetch music playlists');
-    return response.json();
-  } catch (error) {
-    console.error('Error fetching music playlists:', error);
-    throw error;
-  }
-}
-
-export async function fetchTrainingMetrics(): Promise<TrainingMetrics[]> {
-  try {
-    const response = await fetch(`${getBaseUrl()}/api/training`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (!response.ok) throw new Error('Failed to fetch training metrics');
-    return response.json();
-  } catch (error) {
-    console.error('Error fetching training metrics:', error);
-    throw error;
-  }
-} 
