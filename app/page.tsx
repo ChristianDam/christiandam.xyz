@@ -55,6 +55,24 @@ export default async function Home(): Promise<React.ReactElement> {
           to see all.
         </p>
       </section>
+
+      <section className="py-12">
+        <h2 className="text-muted-foreground mb-4">More</h2>
+        <div className="flex flex-col gap-2">
+          <Link
+            href="/articles"
+            className="text-lg md:text-xl text-primary hover:underline"
+          >
+            Articles →
+          </Link>
+          <Link
+            href="/reads"
+            className="text-lg md:text-xl text-primary hover:underline"
+          >
+            My Reads →
+          </Link>
+        </div>
+      </section>
     </main>
   );
 } 
