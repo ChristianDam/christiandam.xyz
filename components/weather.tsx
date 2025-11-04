@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import type { WeatherData } from '../lib/types/api';
 
 export default function Weather() {
@@ -60,7 +61,7 @@ export default function Weather() {
         <div>{weather.windSpeed} km/h</div>
         <div>Weather Icon:</div>
         <div>
-          <img
+          <Image
             src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
             alt={weather.condition}
             width={50}
