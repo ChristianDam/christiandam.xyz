@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getThoughtBySlug, getThoughtSlugs } from '@/lib/thoughts';
 import { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
 
 interface ThoughtPageProps {
   params: {
@@ -32,13 +33,21 @@ export async function generateMetadata({ params }: ThoughtPageProps): Promise<Me
 
 export default function ThoughtPage({ params }: ThoughtPageProps) {
   const thought = getThoughtBySlug(params.slug);
+  const isDev = process.env.NODE_ENV === 'development';
 
-  if (!thought) {
+  if (!thought || (!isDev && !thought.meta.published)) {
     notFound();
   }
 
-  const isDev = process.env.NODE_ENV === 'development';
   const showDraftBadge = isDev && !thought.meta.published;
+
+  const formattedDate = thought.meta.createdAt
+    ? new Date(thought.meta.createdAt).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : '';
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -52,29 +61,13 @@ export default function ThoughtPage({ params }: ThoughtPageProps) {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
             {thought.meta.title}
           </h1>
-          <p className="text-muted-foreground mt-4">
-            {new Date(thought.meta.createdAt).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </p>
+          {formattedDate && (
+            <p className="text-muted-foreground mt-4">{formattedDate}</p>
+          )}
         </header>
 
         <div className="py-12 prose prose-neutral dark:prose-invert max-w-none">
-          {thought.content.split('\n').map((paragraph, index) => {
-            if (!paragraph.trim()) return null;
-            if (paragraph.startsWith('# ')) {
-              return <h1 key={index}>{paragraph.slice(2)}</h1>;
-            }
-            if (paragraph.startsWith('## ')) {
-              return <h2 key={index}>{paragraph.slice(3)}</h2>;
-            }
-            if (paragraph.startsWith('### ')) {
-              return <h3 key={index}>{paragraph.slice(4)}</h3>;
-            }
-            return <p key={index}>{paragraph}</p>;
-          })}
+          <ReactMarkdown>{thought.content}</ReactMarkdown>
         </div>
       </article>
     </main>

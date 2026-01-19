@@ -1,9 +1,23 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Thought, ThoughtMeta } from './types/thought';
+import { Thought } from './types/thought';
 
 const thoughtsDirectory = path.join(process.cwd(), 'content/thoughts');
+
+function parseDate(dateValue: unknown): string {
+  if (!dateValue) return '';
+  const date = new Date(dateValue as string | number | Date);
+  if (isNaN(date.getTime())) return '';
+  return date.toISOString();
+}
+
+function getCreatedAtTime(thought: Thought): number {
+  const createdAt = thought.meta.createdAt;
+  if (!createdAt) return 0;
+  const time = Date.parse(createdAt);
+  return Number.isNaN(time) ? 0 : time;
+}
 
 export function getThoughtSlugs(): string[] {
   if (!fs.existsSync(thoughtsDirectory)) {
@@ -31,7 +45,7 @@ export function getThoughtBySlug(slug: string): Thought | null {
       slug: realSlug,
       description: data.description || '',
       published: data.published ?? false,
-      createdAt: data.createdAt ? new Date(data.createdAt).toISOString() : '',
+      createdAt: parseDate(data.createdAt),
       tags: data.tags || [],
     },
   };
@@ -42,7 +56,7 @@ export function getAllThoughts(): Thought[] {
   return slugs
     .map((slug) => getThoughtBySlug(slug))
     .filter((thought): thought is Thought => thought !== null)
-    .sort((a, b) => (a.meta.createdAt > b.meta.createdAt ? -1 : 1));
+    .sort((a, b) => getCreatedAtTime(b) - getCreatedAtTime(a));
 }
 
 export function getPublishedThoughts(): Thought[] {
