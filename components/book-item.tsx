@@ -28,7 +28,7 @@ export default function BookItem({ book }: BookItemProps) {
         />
       </div>
       <div className="flex-1 space-y-2">
-        <h3 className="font-bold text-lg line-clamp-2">{book.title}</h3>
+        <h3 className="font-bold text-lg overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{book.title}</h3>
         <p className="text-sm text-muted-foreground">
           {book.authors.join(', ')}
         </p>

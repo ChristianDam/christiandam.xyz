@@ -1,23 +1,17 @@
 import React from 'react';
 import BookItem from '../../components/book-item';
 import type { ReadingListData, Book } from '../../lib/types/api';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 async function getReadingList(): Promise<ReadingListData> {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/reading-list`,
-      {
-        cache: 'no-store',
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch reading list');
-    }
-
-    return response.json();
+    const filePath = join(process.cwd(), 'data', 'books.json');
+    const fileContents = readFileSync(filePath, 'utf8');
+    const data: ReadingListData = JSON.parse(fileContents);
+    return data;
   } catch (error) {
-    console.error('Error fetching reading list:', error);
+    console.error('Error reading books data:', error);
     return { books: [] };
   }
 }
