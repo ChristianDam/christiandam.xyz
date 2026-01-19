@@ -1,0 +1,46 @@
+{
+  "books": [
+    {
+      "isbn": "9780141036144",
+      "title": "1984",
+      "authors": ["George Orwell"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141036144-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780062315007",
+      "title": "The Alchemist",
+      "authors": ["Paulo Coelho"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062315007-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780735211292",
+      "title": "Atomic Habits",
+      "authors": ["James Clear"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780735211292-L.jpg",
+      "status": "reading"
+    },
+    {
+      "isbn": "9780143127741",
+      "title": "Sapiens: A Brief History of Humankind",
+      "authors": ["Yuval Noah Harari"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780143127741-L.jpg",
+      "status": "reading"
+    },
+    {
+      "isbn": "9780062457714",
+      "title": "The Subtle Art of Not Giving a F*ck",
+      "authors": ["Mark Manson"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780062457714-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781591847786",
+      "title": "Deep Work",
+      "authors": ["Cal Newport"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781591847786-L.jpg",
+      "status": "next"
+    }
+  ]
+}
