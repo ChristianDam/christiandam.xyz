@@ -1,0 +1,60 @@
+{
+  "books": [
+    {
+      "isbn": "9780141036144",
+      "title": "1984",
+      "authors": ["George Orwell"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141036144-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780141182636",
+      "title": "The Great Gatsby",
+      "authors": ["F. Scott Fitzgerald"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141182636-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780061120084",
+      "title": "To Kill a Mockingbird",
+      "authors": ["Harper Lee"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780061120084-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780452284234",
+      "title": "Animal Farm",
+      "authors": ["George Orwell"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780452284234-L.jpg",
+      "status": "reading"
+    },
+    {
+      "isbn": "9780060850524",
+      "title": "Brave New World",
+      "authors": ["Aldous Huxley"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780060850524-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780316769174",
+      "title": "The Catcher in the Rye",
+      "authors": ["J.D. Salinger"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780316769174-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780140283334",
+      "title": "The Stranger",
+      "authors": ["Albert Camus"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140283334-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780451524935",
+      "title": "The Odyssey",
+      "authors": ["Homer"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg",
+      "status": "reading"
+    }
+  ]
+}
