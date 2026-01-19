@@ -6,14 +6,7 @@ import {
   Card,
   CardContent,
 } from '../../components/ui/card';
-
-interface Book {
-  isbn: string;
-  title: string;
-  authors: string[];
-  coverUrl: string;
-  status: 'next' | 'reading' | 'finished';
-}
+import type { Book } from '../../lib/types/api';
 
 export default function BookCard({ book }: { book: Book }) {
   const [imageError, setImageError] = useState(false);

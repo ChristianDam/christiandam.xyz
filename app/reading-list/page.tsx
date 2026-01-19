@@ -1,26 +1,6 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
+import { getBooks } from '../../lib/books';
 import BookCard from './book-card';
-
-interface Book {
-  isbn: string;
-  title: string;
-  authors: string[];
-  coverUrl: string;
-  status: 'next' | 'reading' | 'finished';
-}
-
-interface BooksData {
-  books: Book[];
-}
-
-function getBooks(): Book[] {
-  const filePath = path.join(process.cwd(), 'data', 'books.json');
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const data = JSON.parse(fileContents) as BooksData;
-  return data.books;
-}
 
 export default function ReadingListPage() {
   const books = getBooks();

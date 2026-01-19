@@ -13,3 +13,15 @@ export interface WeatherData {
   windSpeed: number;
   icon: string;
 }
+
+export interface Book {
+  isbn: string;
+  title: string;
+  authors: string[];
+  coverUrl: string;
+  status: 'next' | 'reading' | 'finished';
+}
+
+export interface BooksData {
+  books: Book[];
+}
