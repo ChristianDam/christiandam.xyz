@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPublishedThoughts } from '@/lib/thoughts';
+import { H1, H2, P, Muted, Small } from '@/components/ui/typography';
 
 export const metadata = {
   title: 'Thoughts',
@@ -12,37 +13,33 @@ export default function ThoughtsPage() {
   return (
     <main className="container mx-auto px-4 py-8">
       <section className="py-12 border-b">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-          Thoughts
-        </h1>
-        <p className="text-lg text-muted-foreground">
+        <H1 className="text-4xl md:text-6xl mb-4">Thoughts</H1>
+        <P className="text-lg text-muted-foreground">
           A collection of thoughts and ideas.
-        </p>
+        </P>
       </section>
 
       <section className="py-12">
         {thoughts.length === 0 ? (
-          <p className="text-muted-foreground">No thoughts yet.</p>
+          <Muted>No thoughts yet.</Muted>
         ) : (
           <div className="space-y-8">
             {thoughts.map((thought) => (
               <article key={thought.slug} className="border-b pb-8 last:border-b-0">
                 <Link href={`/thoughts/${thought.slug}`} className="block group">
-                  <h2 className="text-2xl font-medium group-hover:underline">
+                  <H2 className="text-2xl font-medium group-hover:underline">
                     {thought.meta.title}
-                  </h2>
+                  </H2>
                   {thought.meta.description && (
-                    <p className="text-muted-foreground mt-2">
-                      {thought.meta.description}
-                    </p>
+                    <Muted className="mt-2">{thought.meta.description}</Muted>
                   )}
-                  <p className="text-sm text-muted-foreground mt-2">
+                  <Small className="text-muted-foreground mt-2 block">
                     {new Date(thought.meta.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     })}
-                  </p>
+                  </Small>
                 </Link>
               </article>
             ))}

@@ -1,13 +1,19 @@
 import React from 'react';
 import './globals.css';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { ThemeProvider } from '../components/theme-provider';
 import { ThemeToggle } from '../components/theme-toggle';
 
-const inter = Inter({
-  subsets: ['latin'],
+const haskoy = localFont({
+  src: '../public/fonts/Haskoy.woff2',
+  variable: '--font-haskoy',
   display: 'swap',
-  variable: '--font-inter',
+});
+
+const libreCaslonCondensed = localFont({
+  src: '../public/fonts/Libre Caslon Condensed.woff2',
+  variable: '--font-libre-caslon',
+  display: 'swap',
 });
 
 export const metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} min-h-screen bg-background font-sans antialiased`}
+        className={`${haskoy.variable} ${libreCaslonCondensed.variable} min-h-screen bg-background font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
