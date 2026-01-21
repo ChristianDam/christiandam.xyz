@@ -1,19 +1,21 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { 
-  Cloud, 
-  CloudSunny, 
-  Fog, 
-  HeavyRain, 
-  Rain, 
-  Snow, 
-  SnowFlake, 
-  SunLight, 
-  Thunderstorm 
+import {
+  Cloud,
+  CloudSunny,
+  Fog,
+  HalfMoon,
+  HeavyRain,
+  Rain,
+  Snow,
+  SnowFlake,
+  SunLight,
+  Thunderstorm,
 } from 'iconoir-react';
 import type { WeatherData } from '@/lib/types/api';
 import { Muted } from '@/components/ui/typography';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface WeatherState {
   data: WeatherData | null;
@@ -21,45 +23,48 @@ interface WeatherState {
   error: string | null;
 }
 
-// Map OpenWeatherMap conditions to Iconoir icons
-function getWeatherIcon(condition: string) {
-  const conditionLower = condition.toLowerCase();
-  const iconClassName = "h-8 w-8";
+interface WeatherIconProps {
+  condition: string;
+  isNight: boolean;
+  className?: string;
+}
 
-  // Map main weather conditions to appropriate icons
+function WeatherIcon({ condition, isNight, className = 'h-8 w-8' }: WeatherIconProps) {
+  const conditionLower = condition.toLowerCase();
+
   if (conditionLower.includes('clear')) {
-    return <SunLight className={iconClassName} />;
+    return isNight ? <HalfMoon className={className} /> : <SunLight className={className} />;
   }
   if (conditionLower.includes('cloud')) {
-    // Use cloud-sunny for partly cloudy, otherwise just cloud
     if (conditionLower.includes('few') || conditionLower.includes('scattered')) {
-      return <CloudSunny className={iconClassName} />;
+      return <CloudSunny className={className} />;
     }
-    return <Cloud className={iconClassName} />;
+    return <Cloud className={className} />;
   }
   if (conditionLower.includes('rain') || conditionLower.includes('drizzle')) {
-    // Use heavy rain for intense rain
     if (conditionLower.includes('heavy') || conditionLower.includes('extreme')) {
-      return <HeavyRain className={iconClassName} />;
+      return <HeavyRain className={className} />;
     }
-    return <Rain className={iconClassName} />;
+    return <Rain className={className} />;
   }
   if (conditionLower.includes('thunder') || conditionLower.includes('storm')) {
-    return <Thunderstorm className={iconClassName} />;
+    return <Thunderstorm className={className} />;
   }
   if (conditionLower.includes('snow')) {
-    // Use snowflake for light snow, snow for heavier
     if (conditionLower.includes('light')) {
-      return <SnowFlake className={iconClassName} />;
+      return <SnowFlake className={className} />;
     }
-    return <Snow className={iconClassName} />;
+    return <Snow className={className} />;
   }
-  if (conditionLower.includes('mist') || conditionLower.includes('fog') || conditionLower.includes('haze')) {
-    return <Fog className={iconClassName} />;
+  if (
+    conditionLower.includes('mist') ||
+    conditionLower.includes('fog') ||
+    conditionLower.includes('haze')
+  ) {
+    return <Fog className={className} />;
   }
-  
-  // Default fallback - use cloud-sunny for partial conditions, cloud for others
-  return <Cloud className={iconClassName} />;
+
+  return isNight ? <HalfMoon className={className} /> : <Cloud className={className} />;
 }
 
 export default function Weather() {
@@ -94,19 +99,47 @@ export default function Weather() {
   }, []);
 
   if (state.loading) {
-    return <Muted className="animate-pulse">Loading weather...</Muted>;
+    return (
+      <Card className="h-full w-full bg-muted/50 animate-pulse">
+        <CardContent className="p-6">
+          <div className="h-24 w-48" />
+        </CardContent>
+      </Card>
+    );
   }
 
   if (state.error || !state.data) {
     return null;
   }
 
+  const { temperature, condition, location, isNight, hourlyForecast } = state.data;
+
   return (
-    <div className="flex items-center gap-2">
-      {getWeatherIcon(state.data.condition)}
-      <Muted>
-        {state.data.temperature}°C · {state.data.condition}
-      </Muted>
-    </div>
+    <Card className="h-full w-full">
+      <CardContent className="p-6">
+        <div className="flex items-start justify-between">
+          <div className="flex items-center gap-3">
+            <WeatherIcon condition={condition} isNight={isNight} className="h-10 w-10" />
+            <span className="text-4xl font-medium">{temperature}°</span>
+          </div>
+          <div className="text-right">
+            <p className="font-medium">{condition}</p>
+            <Muted>{location}</Muted>
+          </div>
+        </div>
+
+        {hourlyForecast && hourlyForecast.length > 0 && (
+          <div className="mt-6 flex justify-between border-t border-border pt-4">
+            {hourlyForecast.map((hour) => (
+              <div key={hour.time} className="flex flex-col items-center gap-1">
+                <Muted className="text-xs">{hour.time}</Muted>
+                <WeatherIcon condition={hour.condition} isNight={hour.isNight} className="h-5 w-5" />
+                <span className="text-sm">{hour.temperature}°</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 } 

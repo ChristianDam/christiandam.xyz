@@ -19,13 +19,9 @@ export async function fetchLocation(): Promise<LocationData> {
     // Check if we have cached data that's still valid
     const now = Date.now();
     if (locationCache && now - locationCacheTimestamp < CACHE_DURATION) {
-      console.log('Returning cached location data');
       return locationCache;
     }
-
-    console.log('Fetching fresh location data from API');
     const baseUrl = getBaseUrl();
-    console.log('Using base URL:', baseUrl);
 
     const response = await fetch(`${baseUrl}/api/location`, {
       headers: {
@@ -35,12 +31,10 @@ export async function fetchLocation(): Promise<LocationData> {
     });
 
     if (!response.ok) {
-      console.error('Location API response not ok:', response.status, response.statusText);
       throw new Error(`Failed to fetch location data: ${response.status} ${response.statusText}`);
     }
     
     const data = await response.json();
-    console.log('Received location data:', data);
     
     // Validate the data
     if (!data.city || data.city === 'Unknown') {
@@ -51,7 +45,6 @@ export async function fetchLocation(): Promise<LocationData> {
     // Update cache
     locationCache = data;
     locationCacheTimestamp = now;
-    console.log('Updated location cache');
     
     return data;
   } catch (error) {

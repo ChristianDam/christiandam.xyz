@@ -64,6 +64,19 @@ Use when the user provides Figma links:
 - Extract design specs, colors, typography from Figma files
 - Reference designs during implementation
 
+## Skills
+
+### Frontend Development (`/frontend-dev`)
+Use this skill when building or modifying frontend code:
+- Creating new pages, components, or API routes
+- Implementing UI features with React/TypeScript
+- Working with Server vs Client component patterns
+- Styling with Tailwind CSS or shadcn/ui
+- Data fetching patterns (server-side or client-side)
+- TypeScript best practices for props and types
+
+The skill provides patterns for CVA-based UI primitives, page layouts, dynamic routes with static generation, and the project's conventions.
+
 ## Key Conventions
 
 - Path alias: `@/*` maps to project root
