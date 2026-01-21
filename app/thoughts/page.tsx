@@ -14,7 +14,7 @@ export default function ThoughtsPage() {
     <main className="container mx-auto px-4 py-8">
       <section className="py-12 border-b">
         <H1 className="text-4xl md:text-6xl mb-4">Thoughts</H1>
-        <P className="text-lg text-muted-foreground mt-0">
+        <P className="text-lg text-muted-foreground">
           A collection of thoughts and ideas.
         </P>
       </section>
@@ -27,7 +27,7 @@ export default function ThoughtsPage() {
             {thoughts.map((thought) => (
               <article key={thought.slug} className="border-b pb-8 last:border-b-0">
                 <Link href={`/thoughts/${thought.slug}`} className="block group">
-                  <H2 className="text-2xl font-medium group-hover:underline border-0 pb-0">
+                  <H2 className="text-2xl font-medium group-hover:underline">
                     {thought.meta.title}
                   </H2>
                   {thought.meta.description && (

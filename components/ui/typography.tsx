@@ -8,7 +8,7 @@ export function H1({
   return (
     <h1
       className={cn(
-        'scroll-m-20 text-4xl font-extrabold tracking-tight text-balance',
+        'scroll-m-20 text-4xl font-extrabold tracking-tight break-words text-balance',
         className
       )}
       {...props}
@@ -23,7 +23,7 @@ export function H2({
   return (
     <h2
       className={cn(
-        'scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0',
+        'scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0',
         className
       )}
       {...props}
@@ -67,7 +67,7 @@ export function P({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn('leading-7 [&:not(:first-child)]:mt-6', className)}
+      className={cn('leading-7', className)}
       {...props}
     />
   );
@@ -127,9 +127,9 @@ export function Lead({
 export function Large({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <div className={cn('text-lg font-semibold', className)} {...props} />
+    <p className={cn('text-lg font-semibold', className)} {...props} />
   );
 }
 

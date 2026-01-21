@@ -10,9 +10,9 @@ export default async function Home(): Promise<React.ReactElement> {
   return (
     <main className="container mx-auto px-4 py-8">
       <section className="py-12 border-b">
-        <H1 className='font-serif'>I&apos;m Christian,</H1>
-        <H1>a product designer</H1>
-        <H1>based in Aarhus.</H1>
+        <H1 className="font-serif text-4xl md:text-8xl">I&apos;m Christian,</H1>
+        <H1 className="text-4xl md:text-8xl">a product designer</H1>
+        <H1 className="text-4xl md:text-8xl">based in Aarhus.</H1>
         <Muted>
           {location.country} ({location.latitude}, {location.longitude})
         </Muted>
