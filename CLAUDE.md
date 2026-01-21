@@ -40,6 +40,30 @@ Markdown files in `content/thoughts/` with YAML frontmatter:
 - `lib/types/thought.ts` - ThoughtMeta and Thought interfaces
 - `lib/types/api.ts` - LocationData and WeatherData interfaces
 
+## MCP Servers
+
+This project has three MCP servers configured in `.mcp.json`:
+
+### TailwindCSS (`tailwindcss`)
+Use for Tailwind-related tasks:
+- Looking up utility classes by category or CSS property
+- Converting CSS to Tailwind classes
+- Generating color palettes
+- Getting installation/configuration guides
+
+### shadcn/ui (`shadcn`)
+Use when working with UI components:
+- Search for available components (`search_items_in_registries`)
+- View component source code (`view_items_in_registries`)
+- Get usage examples (`get_item_examples_from_registries`)
+- Get install commands (`get_add_command_for_items`)
+- Always run audit checklist after adding components
+
+### Figma (`figma-remote-mcp`)
+Use when the user provides Figma links:
+- Extract design specs, colors, typography from Figma files
+- Reference designs during implementation
+
 ## Key Conventions
 
 - Path alias: `@/*` maps to project root

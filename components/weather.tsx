@@ -1,12 +1,22 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import type { WeatherData } from '../lib/types/api';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import type { WeatherData } from '@/lib/types/api';
+import { Muted } from '@/components/ui/typography';
+
+interface WeatherState {
+  data: WeatherData | null;
+  loading: boolean;
+  error: string | null;
+}
 
 export default function Weather() {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [state, setState] = useState<WeatherState>({
+    data: null,
+    loading: true,
+    error: null,
+  });
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -18,57 +28,40 @@ export default function Weather() {
           throw new Error(errorData.error || 'Failed to fetch weather data');
         }
 
-        const data = await response.json();
-        setWeather(data);
+        const data: WeatherData = await response.json();
+        setState({ data, loading: false, error: null });
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
+        setState({
+          data: null,
+          loading: false,
+          error: err instanceof Error ? err.message : 'An error occurred',
+        });
       }
     };
 
     fetchWeather();
   }, []);
 
-  if (loading) {
-    return <div className="p-4">Loading weather data...</div>;
+  if (state.loading) {
+    return <Muted className="animate-pulse">Loading weather...</Muted>;
   }
 
-  if (error) {
-    return (
-      <div className="p-4 text-red-500">
-        Error: {error}
-      </div>
-    );
-  }
-
-  if (!weather) {
+  if (state.error || !state.data) {
     return null;
   }
 
   return (
-    <div className="p-4 space-y-2">
-      <h2 className="text-xl font-bold">Current Weather in Aarhus</h2>
-      <div className="grid grid-cols-2 gap-2">
-        <div>Temperature:</div>
-        <div>{weather.temperature}°C</div>
-        <div>Condition:</div>
-        <div>{weather.condition}</div>
-        <div>Humidity:</div>
-        <div>{weather.humidity}%</div>
-        <div>Wind Speed:</div>
-        <div>{weather.windSpeed} km/h</div>
-        <div>Weather Icon:</div>
-        <div>
-          <img
-            src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-            alt={weather.condition}
-            width={50}
-            height={50}
-            className="inline-block"
-          />
-        </div>
-      </div>
+    <div className="flex items-center gap-2">
+      <Image
+        src={`https://openweathermap.org/img/wn/${state.data.icon}.png`}
+        alt={state.data.condition}
+        width={32}
+        height={32}
+        unoptimized
+      />
+      <Muted>
+        {state.data.temperature}°C · {state.data.condition}
+      </Muted>
     </div>
   );
 } 
