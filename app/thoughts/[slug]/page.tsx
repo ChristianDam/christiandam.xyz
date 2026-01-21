@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getThoughtBySlug, getThoughtSlugs } from '@/lib/thoughts';
 import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
+import { H1, Muted } from '@/components/ui/typography';
 
 interface ThoughtPageProps {
   params: {
@@ -58,12 +59,8 @@ export default function ThoughtPage({ params }: ThoughtPageProps) {
               Draft
             </span>
           )}
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            {thought.meta.title}
-          </h1>
-          {formattedDate && (
-            <p className="text-muted-foreground mt-4">{formattedDate}</p>
-          )}
+          <H1 className="text-4xl md:text-5xl">{thought.meta.title}</H1>
+          {formattedDate && <Muted className="mt-4">{formattedDate}</Muted>}
         </header>
 
         <div className="py-12 prose prose-neutral dark:prose-invert max-w-none">
