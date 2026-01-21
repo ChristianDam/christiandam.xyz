@@ -24,41 +24,42 @@ interface WeatherState {
 // Map OpenWeatherMap conditions to Iconoir icons
 function getWeatherIcon(condition: string) {
   const conditionLower = condition.toLowerCase();
+  const iconClassName = "h-8 w-8";
 
   // Map main weather conditions to appropriate icons
   if (conditionLower.includes('clear')) {
-    return <SunLight className="h-8 w-8" />;
+    return <SunLight className={iconClassName} />;
   }
   if (conditionLower.includes('cloud')) {
     // Use cloud-sunny for partly cloudy, otherwise just cloud
     if (conditionLower.includes('few') || conditionLower.includes('scattered')) {
-      return <CloudSunny className="h-8 w-8" />;
+      return <CloudSunny className={iconClassName} />;
     }
-    return <Cloud className="h-8 w-8" />;
+    return <Cloud className={iconClassName} />;
   }
   if (conditionLower.includes('rain') || conditionLower.includes('drizzle')) {
     // Use heavy rain for intense rain
     if (conditionLower.includes('heavy') || conditionLower.includes('extreme')) {
-      return <HeavyRain className="h-8 w-8" />;
+      return <HeavyRain className={iconClassName} />;
     }
-    return <Rain className="h-8 w-8" />;
+    return <Rain className={iconClassName} />;
   }
   if (conditionLower.includes('thunder') || conditionLower.includes('storm')) {
-    return <Thunderstorm className="h-8 w-8" />;
+    return <Thunderstorm className={iconClassName} />;
   }
   if (conditionLower.includes('snow')) {
     // Use snowflake for light snow, snow for heavier
     if (conditionLower.includes('light')) {
-      return <SnowFlake className="h-8 w-8" />;
+      return <SnowFlake className={iconClassName} />;
     }
-    return <Snow className="h-8 w-8" />;
+    return <Snow className={iconClassName} />;
   }
   if (conditionLower.includes('mist') || conditionLower.includes('fog') || conditionLower.includes('haze')) {
-    return <Fog className="h-8 w-8" />;
+    return <Fog className={iconClassName} />;
   }
   
   // Default fallback - use cloud-sunny for partial conditions, cloud for others
-  return <Cloud className="h-8 w-8" />;
+  return <Cloud className={iconClassName} />;
 }
 
 export default function Weather() {
