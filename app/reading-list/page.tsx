@@ -62,15 +62,33 @@ function sortBooksByStatus(books: Book[]): Book[] {
   return [...books].sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
 }
 
+// Arrange books into rows for the grid
+function arrangeIntoRows(books: Book[], booksPerRow: number): Book[][] {
+  const rows: Book[][] = [];
+  for (let i = 0; i < books.length; i += booksPerRow) {
+    rows.push(books.slice(i, i + booksPerRow));
+  }
+  return rows;
+}
+
 export default function ReadingListPage() {
   const books = sortBooksByStatus(booksData.books as Book[]);
+  const rows = arrangeIntoRows(books, 6);
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      <div className="columns-2 sm:columns-3 md:columns-4 lg:columns-5 gap-4">
-        {books.map((book) => (
-          <BookItem key={book.isbn} book={book} />
-        ))}
+    <main className="h-screen overflow-auto">
+      <div className="min-w-max p-8">
+        <div className="flex flex-col gap-4">
+          {rows.map((row, rowIndex) => (
+            <div key={rowIndex} className="flex gap-4">
+              {row.map((book) => (
+                <div key={book.isbn} className="w-48 flex-shrink-0">
+                  <BookItem book={book} />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
