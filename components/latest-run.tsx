@@ -1,10 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { Running } from 'iconoir-react';
 import type { LatestRunData, PolarRoutePoint } from '@/lib/types/polar';
 import { Muted } from '@/components/ui/typography';
 import { Card, CardContent } from '@/components/ui/card';
+
+dayjs.extend(relativeTime);
 
 interface RunState {
   data: LatestRunData | null;
@@ -13,10 +17,9 @@ interface RunState {
 }
 
 function formatRelativeDate(dateString: string): string {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffTime = now.getTime() - date.getTime();
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const date = dayjs(dateString);
+  const now = dayjs();
+  const diffDays = now.diff(date, 'day');
 
   if (diffDays === 0) {
     return 'Today';
@@ -25,11 +28,7 @@ function formatRelativeDate(dateString: string): string {
   } else if (diffDays < 7) {
     return `${diffDays} days ago`;
   } else {
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined,
-    });
+    return date.format(date.year() !== now.year() ? 'MMM D, YYYY' : 'MMM D');
   }
 }
 
@@ -40,28 +39,48 @@ interface MiniMapProps {
 function MiniMap({ route }: MiniMapProps) {
   if (route.length < 2) return null;
 
-  // Calculate bounds
-  const lats = route.map((p) => p.latitude);
-  const lngs = route.map((p) => p.longitude);
-  const minLat = Math.min(...lats);
-  const maxLat = Math.max(...lats);
-  const minLng = Math.min(...lngs);
-  const maxLng = Math.max(...lngs);
+  // Calculate bounds without spread operator to avoid stack overflow on large arrays
+  let minLat = route[0].latitude;
+  let maxLat = route[0].latitude;
+  let minLng = route[0].longitude;
+  let maxLng = route[0].longitude;
+
+  for (let i = 1; i < route.length; i++) {
+    const p = route[i];
+    if (p.latitude < minLat) minLat = p.latitude;
+    if (p.latitude > maxLat) maxLat = p.latitude;
+    if (p.longitude < minLng) minLng = p.longitude;
+    if (p.longitude > maxLng) maxLng = p.longitude;
+  }
 
   const latRange = maxLat - minLat || 0.001;
   const lngRange = maxLng - minLng || 0.001;
 
   // Map coordinates to SVG viewBox (100x80 with padding)
-  const mapToSvg = (point: PolarRoutePoint) => {
+  const mapToSvg = (point: PolarRoutePoint): { x: number; y: number } => {
     const x = ((point.longitude - minLng) / lngRange) * 80 + 10;
     const y = 80 - ((point.latitude - minLat) / latRange) * 60 - 10;
-    return `${x},${y}`;
+    return { x, y };
   };
 
-  const pathData = route.map((point, i) => (i === 0 ? `M ${mapToSvg(point)}` : `L ${mapToSvg(point)}`)).join(' ');
+  const pathData = route
+    .map((point, i) => {
+      const { x, y } = mapToSvg(point);
+      return i === 0 ? `M ${x},${y}` : `L ${x},${y}`;
+    })
+    .join(' ');
+
+  // Pre-calculate start and end coordinates
+  const startCoords = mapToSvg(route[0]);
+  const endCoords = mapToSvg(route[route.length - 1]);
 
   return (
-    <svg viewBox="0 0 100 80" className="w-full h-20 mt-4">
+    <svg
+      viewBox="0 0 100 80"
+      className="w-full h-20 mt-4"
+      role="img"
+      aria-label="Running route map with start and end markers"
+    >
       <path
         d={pathData}
         fill="none"
@@ -72,19 +91,9 @@ function MiniMap({ route }: MiniMapProps) {
         className="text-foreground"
       />
       {/* Start point */}
-      <circle
-        cx={mapToSvg(route[0]).split(',')[0]}
-        cy={mapToSvg(route[0]).split(',')[1]}
-        r="3"
-        className="fill-green-500"
-      />
+      <circle cx={startCoords.x} cy={startCoords.y} r="3" className="fill-green-500" />
       {/* End point */}
-      <circle
-        cx={mapToSvg(route[route.length - 1]).split(',')[0]}
-        cy={mapToSvg(route[route.length - 1]).split(',')[1]}
-        r="3"
-        className="fill-red-500"
-      />
+      <circle cx={endCoords.x} cy={endCoords.y} r="3" className="fill-red-500" />
     </svg>
   );
 }

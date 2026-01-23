@@ -12,7 +12,7 @@ export default async function Home(): Promise<React.ReactElement> {
   return (
     <main className="container max-w-screen-xl mx-auto px-4 py-8">
       <section>
-        <H1 className='font-serif leading-snug tracking-wide'>I&apos;m Christian,</H1>
+        <H1 className="font-serif leading-snug tracking-wide">I&apos;m Christian,</H1>
         <H1>a product designer</H1>
         <H1 >based in Aarhus.</H1>
         <Muted>

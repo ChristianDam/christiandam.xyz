@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { PolarExercise, LatestRunData } from '@/lib/types/polar';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Cache for 1 hour
 
 const POLAR_ACCESS_TOKEN = process.env.POLAR_ACCESS_TOKEN;
 
@@ -52,11 +52,18 @@ export async function GET(): Promise<NextResponse<LatestRunData | { error: strin
     const rawResponse = await response.json();
     const exercises: PolarExercise[] = Array.isArray(rawResponse) ? rawResponse : [];
 
-    if (exercises.length === 0) {
-      return NextResponse.json({ error: 'No exercises found' }, { status: 404 });
+    // Filter to running exercises (road running or trail running)
+    const runningExercises = exercises.filter(
+      (exercise) =>
+        exercise.sport === 'RUNNING' ||
+        exercise.detailed_sport_info?.toLowerCase().includes('running')
+    );
+
+    if (runningExercises.length === 0) {
+      return NextResponse.json({ error: 'No running exercises found' }, { status: 404 });
     }
 
-    const latestExercise = exercises[0];
+    const latestExercise = runningExercises[0];
 
     // Fetch GPX data for elevation
     let elevationGain: number | null = null;
