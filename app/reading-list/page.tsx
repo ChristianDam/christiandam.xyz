@@ -1,39 +1,45 @@
-'use client';
-
-import { useState } from 'react';
-import Image from 'next/image';
-import { H1, H2, P, Muted } from '@/components/ui/typography';
+import { H1, H2, P, Muted, Small } from '@/components/ui/typography';
+import { Badge } from '@/components/ui/badge';
+import { BookCover } from '@/components/book-cover';
 import type { Book, BookStatus } from '@/lib/types/book';
 import booksData from '@/data/books.json';
 
-interface BookCardProps {
+export const metadata = {
+  title: 'Reading List',
+  description: 'Books I am reading and have read',
+};
+
+const STATUS_LABELS: Record<BookStatus, string> = {
+  reading: 'Reading',
+  next: 'Up Next',
+  finished: 'Finished',
+};
+
+const STATUS_VARIANTS: Record<BookStatus, 'default' | 'secondary' | 'outline'> = {
+  reading: 'default',
+  next: 'secondary',
+  finished: 'outline',
+};
+
+interface BookItemProps {
   book: Book;
 }
 
-function BookCard({ book }: BookCardProps) {
-  const [imageError, setImageError] = useState(false);
-
+function BookItem({ book }: BookItemProps) {
   return (
     <article className="flex gap-4 py-4 border-b last:border-b-0">
       <div className="relative w-16 h-24 flex-shrink-0 overflow-hidden rounded bg-muted">
-        {imageError ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-muted text-muted-foreground text-xs p-1 text-center">
-            No cover
-          </div>
-        ) : (
-          <Image
-            src={book.coverUrl}
-            alt={`Cover of ${book.title}`}
-            fill
-            className="object-cover"
-            sizes="64px"
-            onError={() => setImageError(true)}
-          />
-        )}
+        <BookCover coverUrl={book.coverUrl} title={book.title} />
       </div>
-      <div className="flex flex-col justify-center min-w-0">
+      <div className="flex flex-col justify-center min-w-0 gap-1">
         <h3 className="font-medium leading-tight">{book.title}</h3>
-        <Muted className="mt-1">{book.authors.join(', ')}</Muted>
+        <Muted>{book.authors.join(', ')}</Muted>
+        <div className="flex items-center gap-2">
+          <Badge variant={STATUS_VARIANTS[book.status]}>
+            {STATUS_LABELS[book.status]}
+          </Badge>
+          <Small className="text-muted-foreground">{book.isbn}</Small>
+        </div>
       </div>
     </article>
   );
@@ -52,7 +58,7 @@ function BookSection({ title, books }: BookSectionProps) {
       <H2 className="text-2xl mb-4">{title}</H2>
       <div className="divide-y">
         {books.map((book) => (
-          <BookCard key={book.isbn} book={book} />
+          <BookItem key={book.isbn} book={book} />
         ))}
       </div>
     </section>
