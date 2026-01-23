@@ -1,0 +1,235 @@
+{
+  "books": [
+    {
+      "isbn": "9780593734223",
+      "title": "Nexus: A Brief History of Information Networks from the Stone Age to AI",
+      "authors": ["Yuval Noah Harari"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593734223-L.jpg",
+      "status": "reading"
+    },
+    {
+      "isbn": "9781950508921",
+      "title": "The Phoenix Project",
+      "authors": ["Gene Kim", "Kevin Behr", "George Spafford"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781950508921-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780349128290",
+      "title": "Human Frontiers",
+      "authors": ["Michael Bhaskar"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780349128290-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780735211292",
+      "title": "Atomic Habits",
+      "authors": ["James Clear"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780735211292-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780262328845",
+      "title": "Frame Innovation",
+      "authors": ["Kees Dorst"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780262328845-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780141036144",
+      "title": "1984",
+      "authors": ["George Orwell"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141036144-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780374279752",
+      "title": "User Friendly",
+      "authors": ["Cliff Kuang", "Robert Fabricant"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780374279752-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9781787634114",
+      "title": "Build: An Unorthodox Guide to Making Things Worth Making",
+      "authors": ["Tony Fadell"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781787634114-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9781250194466",
+      "title": "Creative Selection",
+      "authors": ["Ken Kocienda"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781250194466-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780965019606",
+      "title": "Flow: The Psychology of Optimal Experience",
+      "authors": ["Mihaly Csikszentmihalyi"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780965019606-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780143111368",
+      "title": "Ikigai",
+      "authors": ["Hector Garcia", "Francesc Miralles"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780143111368-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9781647430511",
+      "title": "Finish What You Start",
+      "authors": ["Peter Hollins"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781647430511-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780140212662",
+      "title": "Design as Art",
+      "authors": ["Bruno Munari"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780140212662-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9781306564397",
+      "title": "Creativity, Inc.",
+      "authors": ["Ed Catmull", "Amy Wallace"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781306564397-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9781491953600",
+      "title": "Lean UX",
+      "authors": ["Jeff Gothelf", "Josh Seiden"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781491953600-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9781591843528",
+      "title": "The Personal MBA",
+      "authors": ["Josh Kaufman"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781591843528-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9783527511051",
+      "title": "Inspired: How to Create Tech Products Customers Love",
+      "authors": ["Marty Cagan"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9783527511051-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9780099786405",
+      "title": "Zen and the Art of Motorcycle Maintenance",
+      "authors": ["Robert M. Pirsig"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780099786405-L.jpg",
+      "status": "finished"
+    },
+    {
+      "isbn": "9786056685804",
+      "title": "Sprint",
+      "authors": ["Jake Knapp", "John Zeratsky", "Braden Kowitz"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9786056685804-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781119521099",
+      "title": "Empowered: Ordinary People, Extraordinary Products",
+      "authors": ["Marty Cagan"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781119521099-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780753556528",
+      "title": "Alchemy",
+      "authors": ["Rory Sutherland"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780753556528-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780393330014",
+      "title": "In Pursuit of the Common Good",
+      "authors": ["Paul Newman", "A. E. Hotchner"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780393330014-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781442372917",
+      "title": "This Changes Everything: Capitalism vs. the Climate",
+      "authors": ["Naomi Klein"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781442372917-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780008303648",
+      "title": "Blitzscaling",
+      "authors": ["Reid Hoffman"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780008303648-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780141983769",
+      "title": "Why We Sleep",
+      "authors": ["Matthew Walker"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780141983769-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781942788812",
+      "title": "Team Topologies",
+      "authors": ["Matthew Skelton", "Manuel Pais"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781942788812-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780593086735",
+      "title": "The Innovation Stack",
+      "authors": ["Jim McKelvey"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593086735-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781847940308",
+      "title": "Switch: How to Change Things When Change Is Hard",
+      "authors": ["Chip Heath", "Dan Heath"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781847940308-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781101184554",
+      "title": "Purple Cow",
+      "authors": ["Seth Godin"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781101184554-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781625271747",
+      "title": "Leading Change",
+      "authors": ["John P. Kotter"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781625271747-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780465003945",
+      "title": "The Design of Everyday Things",
+      "authors": ["Donald A. Norman"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780465003945-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9781491968086",
+      "title": "About Face: The Essentials of Interaction Design",
+      "authors": ["Alan Cooper", "Robert Reimann", "David Cronin", "Christopher Noessel"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9781491968086-L.jpg",
+      "status": "next"
+    },
+    {
+      "isbn": "9780063320338",
+      "title": "Hyper Focus",
+      "authors": ["Chris Bailey"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780063320338-L.jpg",
+      "status": "next"
+    }
+  ]
+}

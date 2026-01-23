@@ -9,6 +9,15 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: false,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'covers.openlibrary.org',
+        pathname: '/b/isbn/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
