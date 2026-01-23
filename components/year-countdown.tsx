@@ -28,7 +28,7 @@ export default function YearCountdown(): React.ReactElement {
     return (
       <span
         key={i}
-        className={`text-base leading-none ${isPast ? 'text-foreground' : 'text-muted-foreground/40'}`}
+        className={`text-base text-center leading-none ${isPast ? 'text-foreground' : 'text-muted-foreground/40'}`}
       >
         {isPast ? '✦' : '•'}
       </span>
