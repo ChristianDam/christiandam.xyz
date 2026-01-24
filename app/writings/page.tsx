@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getPublishedWritings } from '@/lib/writings';
-import { H1, H2, P, Muted, Small } from '@/components/ui/typography';
+import { H2, Muted, Small } from '@/components/ui/typography';
+import { PageLayout } from '@/components/page-layout';
+import { PageHeader } from '@/components/page-header';
 
 export const metadata = {
   title: 'Writings',
@@ -11,13 +13,11 @@ export default function WritingsPage() {
   const writings = getPublishedWritings();
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      <section className="py-12 border-b">
-        <H1 className="text-4xl md:text-6xl mb-4">Writings</H1>
-        <P className="text-lg text-muted-foreground">
-          A collection of writings and ideas.
-        </P>
-      </section>
+    <PageLayout>
+      <PageHeader
+        title="Writings"
+        subtitle="A collection of writings and ideas."
+      />
 
       <section className="py-12">
         {writings.length === 0 ? (
@@ -46,6 +46,6 @@ export default function WritingsPage() {
           </div>
         )}
       </section>
-    </main>
+    </PageLayout>
   );
 }
