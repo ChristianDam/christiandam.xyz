@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -19,7 +18,7 @@ const socialLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
-export function TopNav(): React.ReactElement {
+export function TopNav() {
   const pathname = usePathname();
   const [scrollOpacity, setScrollOpacity] = useState(1);
 
@@ -40,20 +39,17 @@ export function TopNav(): React.ReactElement {
       className="pointer-events-none flex items-center justify-center px-1 py-4 md:justify-between"
     >
       {/* Left section - Main navigation (stays visible) */}
-      <div
-        className="pointer-events-auto relative flex rounded-lg border border-neutral-200 bg-white/70 p-1 shadow-md backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/70"
-      >
+      <div className="pointer-events-auto relative flex rounded-lg border border-border bg-background/70 p-1 shadow-md backdrop-blur-md">
         {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className={cn(
-              'rounded px-2 py-1 text-sm tracking-tight transition-colors',
-              'focus-visible:ring-4 focus-visible:ring-blue-200 focus:text-neutral-900 dark:focus:text-neutral-100',
-              'hover:text-neutral-900 dark:hover:text-neutral-100',
+              'rounded px-2 py-1 text-sm tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+              'hover:text-foreground',
               pathname === link.href
-                ? 'text-neutral-900 dark:text-neutral-100'
-                : 'text-neutral-400 dark:text-neutral-500'
+                ? 'text-foreground'
+                : 'text-muted-foreground'
             )}
           >
             {link.label}
@@ -80,10 +76,9 @@ export function TopNav(): React.ReactElement {
                 rel: 'noopener noreferrer',
               })}
               className={cn(
-                'rounded px-2 py-1 text-sm tracking-tight transition-colors',
-                'text-neutral-400 decoration-wavy underline-offset-4 dark:text-neutral-500',
-                'focus-visible:ring-4 focus-visible:ring-blue-200 focus:text-neutral-900 dark:focus:text-neutral-100',
-                'hover:text-neutral-900 hover:underline dark:hover:text-neutral-100',
+                'rounded px-2 py-1 text-sm tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+                'text-muted-foreground decoration-wavy underline-offset-4',
+                'hover:text-foreground hover:underline',
                 isExternal && 'cursor-alias'
               )}
             >
