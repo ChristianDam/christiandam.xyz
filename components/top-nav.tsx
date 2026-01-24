@@ -17,7 +17,7 @@ type HoverStyle = {
 const navLinks = [
   { href: '/', label: 'Christian' },
   { href: '/projects', label: 'Projects' },
-  { href: '/thoughts', label: 'Writing' },
+  { href: '/writings', label: 'Writing' },
   { href: '/reading-list', label: 'Reading' },
 ];
 
@@ -69,7 +69,7 @@ export function TopNav() {
   return (
     <nav
       aria-label="Main navigation"
-      className="pointer-events-none flex items-center justify-center px-1 py-4 md:justify-between"
+      className="pointer-events-none flex items-center justify-center py-4 md:justify-between"
     >
       {/* Left section - Main navigation (stays visible) */}
       <div

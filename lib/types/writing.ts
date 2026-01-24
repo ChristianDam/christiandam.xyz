@@ -1,4 +1,4 @@
-export interface ThoughtMeta {
+export interface WritingMeta {
   title: string;
   slug: string;
   description: string;
@@ -7,8 +7,8 @@ export interface ThoughtMeta {
   tags?: string[];
 }
 
-export interface Thought {
+export interface Writing {
   slug: string;
   content: string;
-  meta: ThoughtMeta;
+  meta: WritingMeta;
 }

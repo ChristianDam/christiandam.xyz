@@ -1,49 +1,49 @@
 import { notFound } from 'next/navigation';
-import { getThoughtBySlug, getThoughtSlugs } from '@/lib/thoughts';
+import { getWritingBySlug, getWritingSlugs } from '@/lib/writings';
 import { Metadata } from 'next';
 import { H1, Muted } from '@/components/ui/typography';
 import { MarkdownContent } from '@/components/markdown-content';
 
-interface ThoughtPageProps {
+interface WritingPageProps {
   params: {
     slug: string;
   };
 }
 
 export async function generateStaticParams() {
-  const slugs = getThoughtSlugs();
+  const slugs = getWritingSlugs();
   return slugs.map((slug) => ({
     slug: slug.replace(/\.md$/, ''),
   }));
 }
 
-export async function generateMetadata({ params }: ThoughtPageProps): Promise<Metadata> {
-  const thought = getThoughtBySlug(params.slug);
+export async function generateMetadata({ params }: WritingPageProps): Promise<Metadata> {
+  const writing = getWritingBySlug(params.slug);
 
-  if (!thought) {
+  if (!writing) {
     return {
       title: 'Not Found',
     };
   }
 
   return {
-    title: thought.meta.title,
-    description: thought.meta.description,
+    title: writing.meta.title,
+    description: writing.meta.description,
   };
 }
 
-export default function ThoughtPage({ params }: ThoughtPageProps) {
-  const thought = getThoughtBySlug(params.slug);
+export default function WritingPage({ params }: WritingPageProps) {
+  const writing = getWritingBySlug(params.slug);
   const isDev = process.env.NODE_ENV === 'development';
 
-  if (!thought || (!isDev && !thought.meta.published)) {
+  if (!writing || (!isDev && !writing.meta.published)) {
     notFound();
   }
 
-  const showDraftBadge = isDev && !thought.meta.published;
+  const showDraftBadge = isDev && !writing.meta.published;
 
-  const formattedDate = thought.meta.createdAt
-    ? new Date(thought.meta.createdAt).toLocaleDateString('en-US', {
+  const formattedDate = writing.meta.createdAt
+    ? new Date(writing.meta.createdAt).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -59,12 +59,12 @@ export default function ThoughtPage({ params }: ThoughtPageProps) {
               Draft
             </span>
           )}
-          <H1 className="text-4xl md:text-5xl">{thought.meta.title}</H1>
+          <H1 className="text-4xl md:text-5xl">{writing.meta.title}</H1>
           {formattedDate && <Muted className="mt-4">{formattedDate}</Muted>}
         </header>
 
         <div className="py-12 max-w-none space-y-4">
-          <MarkdownContent content={thought.content} />
+          <MarkdownContent content={writing.content} />
         </div>
       </article>
     </main>

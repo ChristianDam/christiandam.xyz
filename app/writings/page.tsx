@@ -1,40 +1,40 @@
 import Link from 'next/link';
-import { getPublishedThoughts } from '@/lib/thoughts';
+import { getPublishedWritings } from '@/lib/writings';
 import { H1, H2, P, Muted, Small } from '@/components/ui/typography';
 
 export const metadata = {
-  title: 'Thoughts',
-  description: 'A collection of thoughts and ideas',
+  title: 'Writings',
+  description: 'A collection of writings and ideas',
 };
 
-export default function ThoughtsPage() {
-  const thoughts = getPublishedThoughts();
+export default function WritingsPage() {
+  const writings = getPublishedWritings();
 
   return (
     <main className="container mx-auto px-4 py-8">
       <section className="py-12 border-b">
-        <H1 className="text-4xl md:text-6xl mb-4">Thoughts</H1>
+        <H1 className="text-4xl md:text-6xl mb-4">Writings</H1>
         <P className="text-lg text-muted-foreground">
-          A collection of thoughts and ideas.
+          A collection of writings and ideas.
         </P>
       </section>
 
       <section className="py-12">
-        {thoughts.length === 0 ? (
-          <Muted>No thoughts yet.</Muted>
+        {writings.length === 0 ? (
+          <Muted>No writings yet.</Muted>
         ) : (
           <div className="space-y-8">
-            {thoughts.map((thought) => (
-              <article key={thought.slug} className="border-b pb-8 last:border-b-0">
-                <Link href={`/thoughts/${thought.slug}`} className="block group">
+            {writings.map((writing) => (
+              <article key={writing.slug} className="border-b pb-8 last:border-b-0">
+                <Link href={`/writings/${writing.slug}`} className="block group">
                   <H2 className="text-2xl font-medium group-hover:underline">
-                    {thought.meta.title}
+                    {writing.meta.title}
                   </H2>
-                  {thought.meta.description && (
-                    <Muted className="mt-2">{thought.meta.description}</Muted>
+                  {writing.meta.description && (
+                    <Muted className="mt-2">{writing.meta.description}</Muted>
                   )}
                   <Small className="text-muted-foreground mt-2 block">
-                    {new Date(thought.meta.createdAt).toLocaleDateString('en-US', {
+                    {new Date(writing.meta.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
