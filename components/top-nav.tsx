@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from './theme-toggle';
 
 const SCROLL_FADE_DISTANCE = 100;
 
@@ -113,11 +114,12 @@ export function TopNav() {
       {/* Right section - Social links (fades on scroll) */}
       <div
         className={cn(
-          'hidden transition-opacity duration-200 md:flex',
+          'hidden items-center transition-opacity duration-200 md:flex',
           scrollOpacity > 0 ? 'pointer-events-auto' : 'pointer-events-none'
         )}
         style={{ opacity: scrollOpacity }}
       >
+        <ThemeToggle />
         {socialLinks.map((link) => {
           const isExternal = link.href.startsWith('http');
           return (
@@ -131,8 +133,7 @@ export function TopNav() {
               className={cn(
                 'rounded px-2 py-1 text-base tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
                 'text-muted-foreground decoration-wavy underline-offset-4',
-                'hover:text-foreground hover:underline',
-                isExternal && 'cursor-alias'
+                'hover:text-foreground hover:underline'
               )}
             >
               {link.label}
