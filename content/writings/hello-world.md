@@ -1,6 +1,6 @@
 ---
 title: Hello World
-description: A first thought
+description: A first writing
 published: true
 createdAt: 2025-01-19
 tags:
@@ -9,4 +9,4 @@ tags:
 
 # Hello World
 
-This is an example thought.
+This is an example writing.

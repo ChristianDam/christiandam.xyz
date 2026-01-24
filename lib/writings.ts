@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Thought } from './types/thought';
+import { Writing } from './types/writing';
 
-const thoughtsDirectory = path.join(process.cwd(), 'content/thoughts');
+const writingsDirectory = path.join(process.cwd(), 'content/writings');
 
 function parseDate(dateValue: unknown): string {
   if (!dateValue) return '';
@@ -12,23 +12,23 @@ function parseDate(dateValue: unknown): string {
   return date.toISOString();
 }
 
-function getCreatedAtTime(thought: Thought): number {
-  const createdAt = thought.meta.createdAt;
+function getCreatedAtTime(writing: Writing): number {
+  const createdAt = writing.meta.createdAt;
   if (!createdAt) return 0;
   const time = Date.parse(createdAt);
   return Number.isNaN(time) ? 0 : time;
 }
 
-export function getThoughtSlugs(): string[] {
-  if (!fs.existsSync(thoughtsDirectory)) {
+export function getWritingSlugs(): string[] {
+  if (!fs.existsSync(writingsDirectory)) {
     return [];
   }
-  return fs.readdirSync(thoughtsDirectory).filter((file) => file.endsWith('.md'));
+  return fs.readdirSync(writingsDirectory).filter((file) => file.endsWith('.md'));
 }
 
-export function getThoughtBySlug(slug: string): Thought | null {
+export function getWritingBySlug(slug: string): Writing | null {
   const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = path.join(thoughtsDirectory, `${realSlug}.md`);
+  const fullPath = path.join(writingsDirectory, `${realSlug}.md`);
 
   if (!fs.existsSync(fullPath)) {
     return null;
@@ -51,15 +51,15 @@ export function getThoughtBySlug(slug: string): Thought | null {
   };
 }
 
-export function getAllThoughts(): Thought[] {
-  const slugs = getThoughtSlugs();
+export function getAllWritings(): Writing[] {
+  const slugs = getWritingSlugs();
   return slugs
-    .map((slug) => getThoughtBySlug(slug))
-    .filter((thought): thought is Thought => thought !== null)
+    .map((slug) => getWritingBySlug(slug))
+    .filter((writing): writing is Writing => writing !== null)
     .sort((a, b) => getCreatedAtTime(b) - getCreatedAtTime(a));
 }
 
-export function getPublishedThoughts(): Thought[] {
+export function getPublishedWritings(): Writing[] {
   const isDev = process.env.NODE_ENV === 'development';
-  return getAllThoughts().filter((thought) => isDev || thought.meta.published);
+  return getAllWritings().filter((writing) => isDev || writing.meta.published);
 }

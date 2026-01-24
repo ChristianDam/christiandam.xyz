@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal design portfolio website for Christian Dam built with Next.js 13 (App Router), TypeScript, and Tailwind CSS. Features a markdown-based "thoughts" blog system with weather/location display.
+Personal design portfolio website for Christian Dam built with Next.js 13 (App Router), TypeScript, and Tailwind CSS. Features a markdown-based "writings" blog system with weather/location display.
 
 ## Commands
 
@@ -19,17 +19,17 @@ bun start        # Start production server
 
 ### App Router Structure (`app/`)
 - `page.tsx` - Homepage with location/weather display
-- `thoughts/page.tsx` - Thoughts index listing all published posts
-- `thoughts/[slug]/page.tsx` - Dynamic thought detail pages (static generation via `generateStaticParams`)
+- `writings/page.tsx` - Writings index listing all published posts
+- `writings/[slug]/page.tsx` - Dynamic writing detail pages (static generation via `generateStaticParams`)
 - `api/location/route.ts` - IP-based geolocation endpoint
 - `api/weather/route.ts` - Weather data endpoint
 
 ### Content System
-Markdown files in `content/thoughts/` with YAML frontmatter:
+Markdown files in `content/writings/` with YAML frontmatter:
 - Required fields: `title`, `slug`, `description`, `published`, `createdAt`
 - Optional: `tags`
 - Drafts (`published: false`) only visible in development
-- Parsing logic in `lib/thoughts.ts`
+- Parsing logic in `lib/writings.ts`
 
 ### Component Patterns
 - UI primitives in `components/ui/` use class-variance-authority for variants
@@ -37,7 +37,7 @@ Markdown files in `content/thoughts/` with YAML frontmatter:
 - Client components marked with `"use client"` directive
 
 ### Type Definitions
-- `lib/types/thought.ts` - ThoughtMeta and Thought interfaces
+- `lib/types/writing.ts` - WritingMeta and Writing interfaces
 - `lib/types/api.ts` - LocationData and WeatherData interfaces
 
 ## MCP Servers
