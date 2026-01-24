@@ -15,7 +15,7 @@ export function PageLayout({
   return (
     <main
       className={cn(
-        'container mx-auto px-4 py-8',
+        'container mx-auto px-4 py-4',
         maxWidth === 'default' ? 'max-w-screen-xl' : 'max-w-2xl',
         className
       )}
