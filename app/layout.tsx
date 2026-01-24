@@ -37,8 +37,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          <div className="container mx-auto max-w-screen-xl px-4">
-            <TopNav />
+          <div className="sticky top-0 z-50">
+            <div className="container mx-auto max-w-screen-xl px-4">
+              <TopNav />
+            </div>
           </div>
           {children}
         </ThemeProvider>

@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -20,13 +21,25 @@ const socialLinks = [
 
 export function TopNav(): React.ReactElement {
   const pathname = usePathname();
+  const [scrollOpacity, setScrollOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Fade out over the first 100px of scroll
+      const opacity = Math.max(0, 1 - window.scrollY / 100);
+      setScrollOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav
       aria-label="Main navigation"
-      className="pointer-events-none sticky top-0 isolate z-10 flex items-center justify-center px-1 py-4 md:justify-between"
+      className="pointer-events-none flex items-center justify-center px-1 py-4 md:justify-between"
     >
-      {/* Left section - Main navigation */}
+      {/* Left section - Main navigation (stays visible) */}
       <div
         className="pointer-events-auto relative flex rounded-lg border border-neutral-200 bg-white/70 p-1 shadow-md backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/70"
       >
@@ -48,8 +61,14 @@ export function TopNav(): React.ReactElement {
         ))}
       </div>
 
-      {/* Right section - Social links */}
-      <div className="pointer-events-auto hidden transition-opacity md:flex">
+      {/* Right section - Social links (fades on scroll) */}
+      <div
+        className={cn(
+          'hidden transition-opacity duration-200 md:flex',
+          scrollOpacity > 0 ? 'pointer-events-auto' : 'pointer-events-none'
+        )}
+        style={{ opacity: scrollOpacity }}
+      >
         {socialLinks.map((link) => {
           const isExternal = link.href.startsWith('http');
           return (
