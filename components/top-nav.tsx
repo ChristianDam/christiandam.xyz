@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -21,16 +21,35 @@ const socialLinks = [
 export function TopNav() {
   const pathname = usePathname();
   const [scrollOpacity, setScrollOpacity] = useState(1);
+  const rafRef = useRef<number | null>(null);
+  const lastOpacityRef = useRef(1);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Fade out over the first 100px of scroll
+    const updateOpacity = () => {
       const opacity = Math.max(0, 1 - window.scrollY / 100);
-      setScrollOpacity(opacity);
+      if (opacity !== lastOpacityRef.current) {
+        lastOpacityRef.current = opacity;
+        setScrollOpacity(opacity);
+      }
+    };
+
+    const handleScroll = () => {
+      if (rafRef.current !== null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        updateOpacity();
+        rafRef.current = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    updateOpacity();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   return (
