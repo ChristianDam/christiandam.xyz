@@ -9,11 +9,11 @@ interface PageHeaderProps {
 export function PageHeader({ title, subtitle }: PageHeaderProps) {
   return (
     <section>
-      <H1 className="font-serif leading-tight font-bold text-5xl mb-2">
+      <H1 className="font-serif leading-tight tracking-tight font-bold text-5xl mb-2">
         {title}
       </H1>
       {subtitle && (
-        <P className="text-muted-foreground">{subtitle}</P>
+        <P className="text-lg leading-tight text-muted-foreground">{subtitle}</P>
       )}
     </section>
   );
