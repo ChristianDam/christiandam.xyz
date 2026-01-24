@@ -1,5 +1,7 @@
 import React from 'react';
-import { H1, Muted } from '@/components/ui/typography';
+import { Muted } from '@/components/ui/typography';
+import { PageLayout } from '@/components/page-layout';
+import { PageHeader } from '@/components/page-header';
 
 export const metadata = {
   title: 'Contact | christiandam.xyz',
@@ -8,11 +10,11 @@ export const metadata = {
 
 export default function ContactPage(): React.ReactElement {
   return (
-    <main className="container mx-auto max-w-screen-xl px-4 py-8">
-      <section>
-        <H1>Contact</H1>
-        <Muted className="mt-4">Coming soon.</Muted>
+    <PageLayout>
+      <PageHeader title="Contact" />
+      <section className="py-12">
+        <Muted>Coming soon.</Muted>
       </section>
-    </main>
+    </PageLayout>
   );
 }

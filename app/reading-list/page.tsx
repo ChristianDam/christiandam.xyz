@@ -1,8 +1,10 @@
-import { H1, H2, P, Muted, Small } from '@/components/ui/typography';
+import { H2, Muted, Small } from '@/components/ui/typography';
 import { Badge } from '@/components/ui/badge';
 import { BookCover } from '@/components/book-cover';
 import type { Book, BookStatus } from '@/lib/types/book';
 import booksData from '@/data/books.json';
+import { PageLayout } from '@/components/page-layout';
+import { PageHeader } from '@/components/page-header';
 
 export const metadata = {
   title: 'Reading List',
@@ -77,17 +79,15 @@ export default function ReadingListPage() {
   const finished = getBooksByStatus(books, 'finished');
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-2xl">
-      <section className="py-12 border-b">
-        <H1 className="text-4xl md:text-5xl mb-4">Reading List</H1>
-        <P className="text-lg text-muted-foreground">
-          Books I am reading and have read.
-        </P>
-      </section>
+    <PageLayout>
+      <PageHeader
+        title="Reading List"
+        subtitle="Books I am reading and have read."
+      />
 
       <BookSection title="Currently Reading" books={currentlyReading} />
       <BookSection title="Up Next" books={upNext} />
       <BookSection title="Finished" books={finished} />
-    </main>
+    </PageLayout>
   );
 }
