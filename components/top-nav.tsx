@@ -5,6 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
+const SCROLL_FADE_DISTANCE = 100;
+
+type HoverStyle = {
+  width: number;
+  transform: string;
+  opacity: number;
+};
+
 const navLinks = [
   { href: '/', label: 'Christian' },
   { href: '/projects', label: 'Projects' },
@@ -21,17 +29,17 @@ const socialLinks = [
 export function TopNav() {
   const pathname = usePathname();
   const [scrollOpacity, setScrollOpacity] = useState(1);
-  const [hoverStyle, setHoverStyle] = useState<{
-    width: number;
-    transform: string;
-    opacity: number;
-  }>({ width: 0, transform: 'translateX(0)', opacity: 0 });
+  const [hoverStyle, setHoverStyle] = useState<HoverStyle>({
+    width: 0,
+    transform: 'translateX(0)',
+    opacity: 0,
+  });
   const rafRef = useRef<number | null>(null);
   const lastOpacityRef = useRef(1);
 
   useEffect(() => {
     const updateOpacity = () => {
-      const opacity = Math.max(0, 1 - window.scrollY / 100);
+      const opacity = Math.max(0, 1 - window.scrollY / SCROLL_FADE_DISTANCE);
       if (opacity !== lastOpacityRef.current) {
         lastOpacityRef.current = opacity;
         setScrollOpacity(opacity);
@@ -70,9 +78,8 @@ export function TopNav() {
         }
       >
         <div
-          className="absolute left-0 -z-10 h-7 rounded bg-secondary backdrop-blur transition-[width,transform,opacity]"
+          className="absolute left-0 -z-10 h-8 rounded bg-secondary backdrop-blur transition-[width,transform,opacity] duration-150"
           style={{
-            transitionDuration: '150ms',
             opacity: hoverStyle.opacity,
             width: hoverStyle.width,
             transform: hoverStyle.transform,
@@ -83,7 +90,7 @@ export function TopNav() {
             key={link.href}
             href={link.href}
             className={cn(
-              'relative rounded px-2 py-1 text-sm tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+              'relative rounded px-2 py-1 text-base tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
               'hover:text-foreground',
               pathname === link.href
                 ? 'text-foreground'
@@ -122,7 +129,7 @@ export function TopNav() {
                 rel: 'noopener noreferrer',
               })}
               className={cn(
-                'rounded px-2 py-1 text-sm tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
+                'rounded px-2 py-1 text-base tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
                 'text-muted-foreground decoration-wavy underline-offset-4',
                 'hover:text-foreground hover:underline',
                 isExternal && 'cursor-alias'
