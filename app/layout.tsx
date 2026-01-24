@@ -2,7 +2,7 @@ import React from 'react';
 import './globals.css';
 import localFont from 'next/font/local';
 import { ThemeProvider } from '../components/theme-provider';
-import { ThemeToggle } from '../components/theme-toggle';
+import { TopNav } from '../components/top-nav';
 
 const haskoy = localFont({
   src: '../public/fonts/Haskoy.woff2',
@@ -37,9 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed right-4 top-4">
-            <ThemeToggle />
-          </div>
+          <TopNav />
           {children}
         </ThemeProvider>
       </body>
