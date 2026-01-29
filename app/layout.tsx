@@ -1,8 +1,7 @@
-import React from "react";
-import "./globals.css";
 import localFont from "next/font/local";
+import React from "react";
 import { ThemeProvider } from "../components/theme-provider";
-import { TopNav } from "../components/top-nav";
+import "./globals.css";
 
 const haskoy = localFont({
   src: "../public/fonts/Haskoy.woff2",
