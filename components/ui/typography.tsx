@@ -148,9 +148,9 @@ export function Small({
 export function Muted({
   className,
   ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
+}: React.HTMLAttributes<HTMLSpanElement>) {
   return (
-    <p
+    <span
       className={cn('text-sm text-muted-foreground', className)}
       {...props}
     />
