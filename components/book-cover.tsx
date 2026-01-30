@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
+import Image from "next/image";
+import { useState } from "react";
 
 interface BookCoverProps {
   coverUrl: string;
@@ -25,7 +25,7 @@ export function BookCover({ coverUrl, title }: BookCoverProps) {
       alt={`Cover of ${title}`}
       fill
       className="object-cover"
-      sizes="64px"
+      sizes="40px"
       onError={() => setImageError(true)}
     />
   );

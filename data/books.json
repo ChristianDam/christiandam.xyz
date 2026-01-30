@@ -5,7 +5,7 @@
       "title": "Nexus: A Brief History of Information Networks from the Stone Age to AI",
       "authors": ["Yuval Noah Harari"],
       "coverUrl": "https://covers.openlibrary.org/b/isbn/9780593734223-L.jpg",
-      "status": "reading"
+      "status": "finished"
     },
     {
       "isbn": "9781950508921",
@@ -220,7 +220,12 @@
     {
       "isbn": "9781491968086",
       "title": "About Face: The Essentials of Interaction Design",
-      "authors": ["Alan Cooper", "Robert Reimann", "David Cronin", "Christopher Noessel"],
+      "authors": [
+        "Alan Cooper",
+        "Robert Reimann",
+        "David Cronin",
+        "Christopher Noessel"
+      ],
       "coverUrl": "https://covers.openlibrary.org/b/isbn/9781491968086-L.jpg",
       "status": "next"
     },
@@ -230,6 +235,13 @@
       "authors": ["Chris Bailey"],
       "coverUrl": "https://covers.openlibrary.org/b/isbn/9780063320338-L.jpg",
       "status": "next"
+    },
+    {
+      "isbn": "9780571364886",
+      "title": "Klara and the Sun",
+      "authors": ["Kazuo Ishiguro"],
+      "coverUrl": "https://covers.openlibrary.org/b/isbn/9780571364886-L.jpg",
+      "status": "reading"
     }
   ]
 }
