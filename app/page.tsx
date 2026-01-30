@@ -6,6 +6,7 @@ import { Github, Linkedin, Page, Send } from "iconoir-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import CurrentBook from "../components/current-book";
 import LatestRun from "../components/latest-run";
 import Weather from "../components/weather";
 import YearCountdown from "../components/year-countdown";
@@ -150,6 +151,9 @@ export default async function Home(): Promise<React.ReactElement> {
           </BentoGridItem>
           <BentoGridItem colSpan={2} variant="ghost">
             <Weather />
+          </BentoGridItem>
+          <BentoGridItem colSpan={1} variant="ghost">
+            <CurrentBook />
           </BentoGridItem>
           <BentoGridItem colSpan={2} variant="ghost">
             <LatestRun />
