@@ -1,4 +1,4 @@
-import { Large, P } from "@/components/ui/typography";
+import { Lead, P } from "@/components/ui/typography";
 
 interface ExperienceItemProps {
   company: string;
@@ -30,7 +30,7 @@ const experiences: ExperienceItemProps[] = [
     period: "2022",
   },
   {
-    company: "Rightly",
+    company: "Rightly (acquired by Righthub)",
     role: "UX Designer",
     period: "2021",
   },
@@ -43,14 +43,12 @@ const experiences: ExperienceItemProps[] = [
 
 export default function Experience() {
   return (
-    <div className="py-10">
-      <Large className="font-medium text-muted-foreground mb-2">
-        Experience
-      </Large>
+    <section className="px-4">
+      <Lead className="font-medium text-muted-foreground mb-2">Experience</Lead>
       {experiences.map((experience) => (
         <ExperienceItem key={experience.company} {...experience} />
       ))}
-    </div>
+    </section>
   );
 }
 

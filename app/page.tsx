@@ -1,6 +1,7 @@
 import Experience from "@/components/experience";
+import Projects from "@/components/projects";
 import { Button } from "@/components/ui/button";
-import { H1, P } from "@/components/ui/typography";
+import { H1 } from "@/components/ui/typography";
 import { Github, Linkedin, Page, Send } from "iconoir-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,14 +9,14 @@ import React from "react";
 
 export default async function Home(): Promise<React.ReactElement> {
   return (
-    <main className="container max-w-screen-lg mx-auto px-4 py-20">
-      <section className="flex flex-col max-w-screen-md mx-auto">
+    <main className="container max-w-screen-lg mx-auto py-20 space-y-10">
+      <section className="flex flex-col max-w-screen-md px-4">
         <Image
           src="/portrait-me.jpg"
           alt="Portrait of Christian"
-          width={96}
-          height={96}
-          className="w-24 h-24 mb-4 rounded-md"
+          width={112}
+          height={112}
+          className="w-28 h-28 mb-4 rounded-md"
           priority
         />
         <H1 className="font-semibold">Hi there, I&#39;m Christian Dam.</H1>
@@ -58,14 +59,8 @@ export default async function Home(): Promise<React.ReactElement> {
           </Button>
         </div>
       </section>
-      <section className="max-w-screen-md mx-auto my-10">
-        <P className="font-medium">
-          Design shapes how we think and who we become. It should make people
-          capable, not dependent. Craft comes from empathy, knowledge,
-          enthusiasm, and care. I believe we can do better together.{" "}
-        </P>
-        <Experience />
-      </section>
+      <Experience />
+      <Projects />
     </main>
   );
 }
