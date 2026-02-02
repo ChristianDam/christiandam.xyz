@@ -12,10 +12,10 @@ export default function CurrentBook() {
 
   return (
     <Link href="/reading-list" className="group">
-      <Card className="relative h-full w-full hover:bg-secondary transition-colors">
+      <Card className="relative aspect-square  w-full hover:bg-secondary transition-colors">
         <ArrowUpRight
-          strokeWidth={1.5}
-          className="absolute top-4 right-4 w-5 h-5 text-muted-foreground opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200"
+          strokeWidth={2}
+          className="absolute top-3 right-3 w-5 h-5 text-muted-foreground/80 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200"
         />
         <CardContent className="flex flex-col h-full items-center justify-center p-4">
           <Small className="mb-4 text-xs uppercase text-muted-foreground">

@@ -31,3 +31,10 @@ export interface LatestRunData {
   elevationGain: number | null; // meters
   route: PolarRoutePoint[] | null;
 }
+
+export interface YearlyRunData {
+  totalDistanceKm: number;
+  goalKm: number;
+  runCount: number;
+  year: number;
+}
