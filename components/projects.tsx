@@ -33,9 +33,15 @@ function ProjectItem({ name, description, year, url }: ProjectItemProps) {
 const projects: ProjectItemProps[] = [
   {
     name: "Togaether",
-    description: "Brief description of the project",
-    year: "2024",
-    url: "https://example.com",
+    description: "A social app for friends not advertisers",
+    year: "Work in progress",
+    url: "/projects/togaether",
+  },
+  {
+    name: "things I like",
+    description: "Collection of random things I like",
+    year: "Work in progress",
+    url: "https://www.figma.com/board/sR6O0u0o7In222FWjCA2RI/things-i-like?node-id=0-1&t=hPtryY7fxmatrJql-1",
   },
   {
     name: "T.Hue",

@@ -39,6 +39,16 @@ const experiences: ExperienceItemProps[] = [
     role: "Teaching Assistant",
     period: "2019",
   },
+  {
+    company: "Aarhus University",
+    role: "Master's, IT Product Development",
+    period: "2019",
+  },
+  {
+    company: "Aarhus University",
+    role: "Bachelor, IT Product Development",
+    period: "2016",
+  },
 ];
 
 export default function Experience() {

@@ -11,13 +11,13 @@ interface PageHeaderProps {
 export function PageHeader({ title, subtitle }: PageHeaderProps) {
   return (
     <section className="mb-4">
-      <Link className="absolute top-4 left-4" href="/" passHref>
+      <Link href="/" passHref className="-ml-3 mb-4 inline-block">
         <Button variant="ghost">
-          <ArrowLeft />
-          <P>Back</P>
+          <ArrowLeft strokeWidth={2} />
+          <P className="font-semibold">Back</P>
         </Button>
       </Link>
-      <H1 className="font-bold text-5xl mb-2">{title}</H1>
+      <H1 className="font-bold text-5xl mb-4">{title}</H1>
       {subtitle && (
         <P className="text-lg leading-tight text-muted-foreground">
           {subtitle}

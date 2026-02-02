@@ -9,7 +9,7 @@ interface PageLayoutProps {
 
 export function PageLayout({ children, className }: PageLayoutProps) {
   return (
-    <main className={cn("max-w-screen-md mx-auto py-20 px-4", className)}>
+    <main className={cn("max-w-screen-md mx-auto py-10 px-4", className)}>
       {children}
     </main>
   );

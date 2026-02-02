@@ -65,7 +65,7 @@ export function P({
   className,
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
-  return <p className={cn("leading-7", className)} {...props} />;
+  return <p className={cn("leading-7 font-medium", className)} {...props} />;
 }
 
 export function Blockquote({
