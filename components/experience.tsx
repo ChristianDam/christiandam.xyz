@@ -1,4 +1,5 @@
 import { Large, P } from "@/components/ui/typography";
+import { ArrowUpRight } from "iconoir-react";
 import Link from "next/link";
 
 interface ExperienceItemProps {
@@ -13,15 +14,27 @@ function ExperienceItem({ company, role, period, url }: ExperienceItemProps) {
     <div className="flex flex-col space-y-0 group px-4 hover:bg-secondary py-2 rounded-lg">
       <div className="flex justify-between items-center">
         <P className="font-semibold">{role}</P>
-        <P className="text-muted-foreground">{period}</P>
+        <div className="relative flex items-center">
+          <P className={`text-muted-foreground transition-transform duration-200 ${url ? "group-hover:-translate-x-5" : ""}`}>{period}</P>
+          {url && (
+            <ArrowUpRight
+              strokeWidth={2}
+              className="absolute right-0 w-4 h-4 text-muted-foreground opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+            />
+          )}
+        </div>
       </div>
       <P className="text-muted-foreground leading-none">{company}</P>
     </div>
   );
 
   if (url) {
+    const isExternal = url.startsWith("http");
     return (
-      <Link href={url} target="_blank" rel="noopener noreferrer">
+      <Link
+        href={url}
+        {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+      >
         {content}
       </Link>
     );
