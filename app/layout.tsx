@@ -1,19 +1,6 @@
-import localFont from "next/font/local";
 import React from "react";
 import { ThemeProvider } from "../components/theme-provider";
 import "./globals.css";
-
-const haskoy = localFont({
-  src: "../public/fonts/Haskoy.woff2",
-  variable: "--font-haskoy",
-  display: "swap",
-});
-
-const libreCaslonCondensed = localFont({
-  src: "../public/fonts/Libre Caslon Condensed.woff2",
-  variable: "--font-libre-caslon",
-  display: "swap",
-});
 
 export const metadata = {
   title: "christiandam.xyz",
@@ -28,7 +15,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${haskoy.variable} ${libreCaslonCondensed.variable} min-h-screen bg-background font-sans antialiased`}
+        className="min-h-screen bg-background font-sans antialiased"
       >
         <ThemeProvider
           attribute="class"
