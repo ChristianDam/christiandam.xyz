@@ -5,11 +5,11 @@ const BASE_URL = 'https://christiandam.xyz'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: new Date() },
-    { url: `${BASE_URL}/writings`, lastModified: new Date() },
-    { url: `${BASE_URL}/projects`, lastModified: new Date() },
-    { url: `${BASE_URL}/reading-list`, lastModified: new Date() },
-    { url: `${BASE_URL}/contact`, lastModified: new Date() },
+    { url: BASE_URL },
+    { url: `${BASE_URL}/writings` },
+    { url: `${BASE_URL}/projects` },
+    { url: `${BASE_URL}/reading-list` },
+    { url: `${BASE_URL}/contact` },
   ]
 
   const writingRoutes: MetadataRoute.Sitemap = getPublishedWritings().map((writing) => ({
