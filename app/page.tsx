@@ -3,6 +3,7 @@ import Projects from "@/components/projects";
 import { Button } from "@/components/ui/button";
 import { H1 } from "@/components/ui/typography";
 import { Github, Linkedin, Page, Send } from "iconoir-react";
+import { serializeJsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +27,7 @@ export default async function Home(): Promise<React.ReactElement> {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
             "@type": "Person",
             name: "Christian Dam",

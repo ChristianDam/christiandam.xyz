@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { serializeJsonLd } from '@/lib/json-ld';
 import { getWritingBySlug, getWritingSlugs } from '@/lib/writings';
 import { Metadata } from 'next';
 import { H1, Muted } from '@/components/ui/typography';
@@ -67,7 +68,7 @@ export default function WritingPage({ params }: WritingPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               "@context": "https://schema.org",
               "@type": "BlogPosting",
               headline: writing.meta.title,
