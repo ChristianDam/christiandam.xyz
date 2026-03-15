@@ -4,7 +4,7 @@ import { PageLayout } from '@/components/page-layout';
 import { PageHeader } from '@/components/page-header';
 
 export const metadata = {
-  title: 'Projects | christiandam.xyz',
+  title: 'Projects',
   description: 'Projects by Christian Dam.',
 };
 

@@ -3,13 +3,42 @@ import Projects from "@/components/projects";
 import { Button } from "@/components/ui/button";
 import { H1 } from "@/components/ui/typography";
 import { Github, Linkedin, Page, Send } from "iconoir-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+export const metadata: Metadata = {
+  title: "Christian Dam — Product Designer",
+  description:
+    "Product designer crafting digital products and experiences. Based in Copenhagen.",
+  openGraph: {
+    title: "Christian Dam — Product Designer",
+    description: "Product designer crafting digital products and experiences.",
+    url: "https://christiandam.xyz",
+    type: "profile",
+  },
+};
+
 export default async function Home(): Promise<React.ReactElement> {
   return (
     <main className="container max-w-screen-lg mx-auto py-20 space-y-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Christian Dam",
+            url: "https://christiandam.xyz",
+            jobTitle: "Product Designer",
+            sameAs: [
+              "https://github.com/ChristianDam",
+              "https://www.linkedin.com/in/christian-dam/",
+            ],
+          }),
+        }}
+      />
       <section className="flex flex-col max-w-screen-md px-4">
         <Image
           src="/portrait-me.jpg"
