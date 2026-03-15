@@ -4,7 +4,7 @@ import { PageLayout } from '@/components/page-layout';
 import { PageHeader } from '@/components/page-header';
 
 export const metadata = {
-  title: 'Contact | christiandam.xyz',
+  title: 'Contact',
   description: 'Get in touch with Christian Dam.',
 };
 
