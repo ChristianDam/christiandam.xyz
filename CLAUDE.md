@@ -95,6 +95,14 @@ Use this skill when building or modifying frontend code:
 
 The skill provides patterns for CVA-based UI primitives, page layouts, dynamic routes with static generation, and the project's conventions.
 
+## Planning
+
+Implementation plans live in `.claude/plans/`. Use this folder to document approach, tasks, and status for non-trivial work. See `.claude/plans/README.md` for the template and conventions.
+
+- Create a plan before starting multi-step features or refactors
+- Update plan status as work progresses
+- Name files: `YYYY-MM-DD-short-description.md`
+
 ## Key Conventions
 
 - Path alias: `@/*` maps to project root
