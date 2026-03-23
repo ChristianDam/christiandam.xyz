@@ -95,6 +95,14 @@ Use this skill when building or modifying frontend code:
 
 The skill provides patterns for CVA-based UI primitives, page layouts, dynamic routes with static generation, and the project's conventions.
 
+### Docs (`/docs`)
+
+Use this skill every time you create or update a PR. It ensures project documentation stays in sync with code changes:
+
+- Updates plans in `.claude/plans/` (status, task checkboxes)
+- Updates `CLAUDE.md` if new routes, components, types, or conventions are introduced
+- Cleans up stale or completed plans
+
 ## Planning
 
 Implementation plans live in `.claude/plans/`. Use this folder to document approach, tasks, and status for non-trivial work. See `.claude/plans/README.md` for the template and conventions.
